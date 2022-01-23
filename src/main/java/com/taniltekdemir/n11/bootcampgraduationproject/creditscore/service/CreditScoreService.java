@@ -22,7 +22,7 @@ public class CreditScoreService {
     private final CreditScoreRepository creditScoreRepository;
 
     public CreditScore create(Long userId) {
-        Integer score = getRandomNumberUsingNextInt(1, 1010);
+        Integer score = getRandomNumberUsingNextInt(1, 1001);
         CreditScoreSaveEntityDto creditScoreSaveEntityDto = new CreditScoreSaveEntityDto(userId, score);
         CreditScore creditScore = CreditScoreMapper.INSTANCE.convertCreditScoreSaveEntityToCrediteScore(creditScoreSaveEntityDto);
 
@@ -35,14 +35,21 @@ public class CreditScoreService {
     }
 
     public CreditScore findByUserId(Long userId) {
-
         CreditScore creditScore = creditScoreRepository.findFirstByUser_Id(userId);
         if (creditScore == null) {
             return create(userId);
         }
         return creditScore;
-
     }
+
+    public Boolean isExistCreditScoreByUserId(Long userId) {
+        CreditScore creditScore = creditScoreRepository.findFirstByUser_Id(userId);
+        if (creditScore == null) {
+            return false;
+        }
+        return true;
+    }
+
 
 
 }
