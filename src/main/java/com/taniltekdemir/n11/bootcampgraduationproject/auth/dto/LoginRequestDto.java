@@ -1,6 +1,6 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.auth.dto;
 
-public class UserRequestDto {
+public class LoginRequestDto {
 
     private String username;
     private String password;

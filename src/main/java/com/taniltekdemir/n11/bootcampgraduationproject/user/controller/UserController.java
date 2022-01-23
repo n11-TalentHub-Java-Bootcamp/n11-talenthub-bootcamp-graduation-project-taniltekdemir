@@ -6,11 +6,13 @@ import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
-
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/users")
 @CrossOrigin
@@ -28,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody UserSaveEntityDto userSaveEntityDto) {
+    public ResponseEntity<?> save(@Valid @RequestBody UserSaveEntityDto userSaveEntityDto) {
 
         validationForSaveUser(userSaveEntityDto);
 
@@ -37,9 +39,29 @@ public class UserController {
         return ResponseEntity.ok(userDto);
     }
 
+    @PostMapping("/updateUser")
+    public ResponseEntity<?> updateUser(@RequestBody UserDto userDto) {
+        try {
+            UserDto updateUser = userService.update(userDto);
+            return ResponseEntity.ok(updateUser);
+        } catch(CommonException e) {
+            log.error("Kullanıcı bilgisi güncellenemedi");
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        try {
+            userService.delete(id);
+        } catch (CommonException e) {
+            log.error("Kullanıcı silinemedi");
+        }
+    }
+
     private void validationForSaveUser(UserSaveEntityDto saveEntity) {
-        if (saveEntity.getName() == null || saveEntity.getSurname() == null
-                || saveEntity.getDateOfBirth() == null || saveEntity.getTckn() == null) {
+        if (saveEntity.getName().isEmpty() || saveEntity.getSurname().isEmpty()
+                || saveEntity.getDateOfBirth().isEmpty() || saveEntity.getTckn().isEmpty()) {
             throw new CommonException("Boş bırakılmış zorunlu alanlar var.");
         }
 
@@ -71,16 +93,5 @@ public class UserController {
                 throw new CommonException("E posta adresi Türkçe karakter içeremez.");
             }
         }
-    }
-
-    @PostMapping("/updateUser")
-    public ResponseEntity<?> updateUser(@RequestBody UserDto userDto) {
-        UserDto updateUser = userService.update(userDto);
-        return ResponseEntity.ok(updateUser);
-    }
-
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
-        userService.delete(id);
     }
 }

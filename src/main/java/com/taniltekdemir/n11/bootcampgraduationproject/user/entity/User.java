@@ -12,7 +12,8 @@ import javax.persistence.*;
 public class User implements BaseEntity {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "User", sequenceName = "USR_USER_ID_SEQ")
+    @GeneratedValue(generator = "User")
     private Long id;
 
     @Column(name = "name")

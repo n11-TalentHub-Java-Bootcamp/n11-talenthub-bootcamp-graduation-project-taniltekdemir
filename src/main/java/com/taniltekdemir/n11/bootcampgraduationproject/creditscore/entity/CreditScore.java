@@ -12,7 +12,8 @@ import javax.persistence.*;
 public class CreditScore implements BaseEntity {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "CreditScore", sequenceName = "CREDIT_SCORE_ID_SEQ")
+    @GeneratedValue(generator = "CreditScore")
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
