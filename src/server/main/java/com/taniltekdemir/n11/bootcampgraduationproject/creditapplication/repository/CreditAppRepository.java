@@ -5,8 +5,6 @@ import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.enums.E
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface CreditAppRepository extends JpaRepository<CreditApplication, Long> {
 

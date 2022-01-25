@@ -1,8 +1,5 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.entity;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.Above1000Strategy;
-import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.Below500Strategy;
-import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.Between500And1000Strategy;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.substrategy.Above10000SubStrategy;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.substrategy.Below5000SubStrategy;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.substrategy.Between5000And10000SubStrategy;

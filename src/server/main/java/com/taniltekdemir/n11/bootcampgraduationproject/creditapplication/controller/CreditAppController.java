@@ -1,21 +1,14 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.controller;
 
 import com.taniltekdemir.n11.bootcampgraduationproject.common.exception.CommonException;
-import com.taniltekdemir.n11.bootcampgraduationproject.common.exception.UserNotFoundException;
-import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.dto.ApplicationDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.dto.ApplicationSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.service.CreditAppService;
-import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
-import com.taniltekdemir.n11.bootcampgraduationproject.user.service.UserService;
-import com.taniltekdemir.n11.bootcampgraduationproject.user.service.entityService.UserEntityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RestController

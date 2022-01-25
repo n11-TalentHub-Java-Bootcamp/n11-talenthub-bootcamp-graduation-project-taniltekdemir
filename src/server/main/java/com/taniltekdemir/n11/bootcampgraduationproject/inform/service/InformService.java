@@ -1,7 +1,5 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.inform.service;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.dto.ApplicationSaveEntityDto;
-import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.substrategy.payload.EvaluationResult;
 import com.taniltekdemir.n11.bootcampgraduationproject.inform.dto.InformDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.inform.email.service.MailService;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,5 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.auth.controller;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.auth.dto.InterrogateDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.auth.dto.LoginRequestDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.auth.service.AuthenticationService;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditmanager.service.ManagerService;
