@@ -37,7 +37,4 @@ public class User implements BaseEntity {
     @Column(name = "type_of_user")
     @Enumerated(EnumType.STRING)
     private EnumUserType userType;
-
-    @Column(name = "password")
-    private String password;
 }

@@ -27,6 +27,4 @@ public class UserSaveEntityDto {
     @NotNull
     private String dateOfBirth;
     private EnumUserType userType;
-    @NotNull
-    private String password;
 }
