@@ -45,8 +45,6 @@ isrc/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditscore/servi
 `src/main/java/com/taniltekdemir/n11/bootcampgraduationproject/gen/service/BaseEntityService.java,d/d/dd167777195a465ae955b2769238d3e2b7cd2211
 ¡
 qsrc/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditapplication/dto/ApplicationSaveEntityDto.java,e/6/e6ba58bb29358d8f966c41e4b5bc60cc7a022206
-ƒ
-Ssrc/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/entity/User.java,8/3/83d5d416bb991d8c9aa2c76cb7ff5e47b668ba0f
 ‘
 asrc/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/repository/UserRepository.java,9/8/9827b324539778813f34ac3b54b3c162449fa98f
 Ÿ

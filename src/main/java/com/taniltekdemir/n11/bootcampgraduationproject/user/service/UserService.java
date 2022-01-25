@@ -7,7 +7,6 @@ import com.taniltekdemir.n11.bootcampgraduationproject.user.mapper.UserMapper;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.entityService.UserEntityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +20,6 @@ public class UserService {
 
     private final UserEntityService userEntityService;
 
-    private final PasswordEncoder passwordEncoder;
-
     public List<UserDto> findAll() {
         List<User> userList = userEntityService.findAll();
         return UserMapper.INSTANCE.convertUserListToUserDtoList(userList);
@@ -31,8 +28,6 @@ public class UserService {
     public UserDto save(UserSaveEntityDto userSaveEntityDto) {
         validateUserRequest(userSaveEntityDto.getTckn());
         User user = UserMapper.INSTANCE.convertUserSaveEntityDtoToUser(userSaveEntityDto);
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(encodedPassword);
         user = userEntityService.save(user);
         return UserMapper.INSTANCE.convertUserToUserDto(user);
     }
