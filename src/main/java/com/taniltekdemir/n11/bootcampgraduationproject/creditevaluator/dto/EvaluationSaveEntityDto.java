@@ -3,16 +3,17 @@ package com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.dto;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.enums.EnumEvaluateStatus;
 import lombok.Data;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.math.BigDecimal;
 
 @Data
-public class EvaluationDto {
+public class EvaluationSaveEntityDto {
 
-    private Integer score;
-    private BigDecimal salary;
-    private BigDecimal guarantee;
-    private BigDecimal limitOfCredit;
-    private EnumEvaluateStatus evaluateStatus;
-    private Long applicationId;
     private Long userId;
+    private Long applicationId;
+    private BigDecimal limitOfCredit;
+    private Integer scoreOfCredit;
+    @Enumerated(EnumType.STRING)
+    private EnumEvaluateStatus evaluateStatus;
 }

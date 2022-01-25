@@ -21,12 +21,13 @@ public class CreditScoreService {
 
     private final CreditScoreRepository creditScoreRepository;
 
-    public CreditScore create(Long userId) {
+    public Integer create(Long userId) {
         Integer score = getRandomNumberUsingNextInt(1, 1001);
         CreditScoreSaveEntityDto creditScoreSaveEntityDto = new CreditScoreSaveEntityDto(userId, score);
         CreditScore creditScore = CreditScoreMapper.INSTANCE.convertCreditScoreSaveEntityToCrediteScore(creditScoreSaveEntityDto);
 
-        return creditScoreEntityService.save(creditScore);
+        creditScore = creditScoreEntityService.save(creditScore);
+        return creditScore.getCreditScore();
     }
 
     public Integer getRandomNumberUsingNextInt(int min, int max) {
@@ -34,12 +35,12 @@ public class CreditScoreService {
         return random.nextInt(max - min) + min;
     }
 
-    public CreditScore findByUserId(Long userId) {
+    public Integer findByUserId(Long userId) {
         CreditScore creditScore = creditScoreRepository.findFirstByUser_Id(userId);
         if (creditScore == null) {
             return create(userId);
         }
-        return creditScore;
+        return creditScore.getCreditScore();
     }
 
     public Boolean isExistCreditScoreByUserId(Long userId) {

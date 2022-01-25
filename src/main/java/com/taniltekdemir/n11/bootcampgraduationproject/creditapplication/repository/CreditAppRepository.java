@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface CreditAppRepository extends JpaRepository<CreditApplication, Long> {
 
-    List<CreditApplication> findAllByUser_IdAndApplicationValidity(Long userId, EnumApplicationValidity enumApplicationValidity);
+    CreditApplication findFirstByUser_IdAndApplicationValidity(Long userId, EnumApplicationValidity enumApplicationValidity);
 
 }

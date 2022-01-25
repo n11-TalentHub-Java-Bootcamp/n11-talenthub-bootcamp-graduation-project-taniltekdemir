@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByTckn(String tckn);
+
+    User findFirstByTcknAndAndDateOfBirth(String tckn, String dateOfBirth);
 }

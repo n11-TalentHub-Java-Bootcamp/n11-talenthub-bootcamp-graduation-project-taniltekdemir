@@ -14,4 +14,5 @@ public class UserDto {
     private String email;
     private String dateOfBirth;
     private EnumUserType userType;
+    private String password;
 }

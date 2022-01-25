@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EvaluatorRepository extends JpaRepository<EvaluateReport, Long> {
+
+    EvaluateReport findFirstByApplication_Id(Long applicationId);
+
 }

@@ -25,17 +25,13 @@ import java.util.Optional;
 public class CreditAppController {
 
     private final CreditAppService creditAppService;
-    private final UserEntityService userEntityService;
 
     @PostMapping("/apply")
     public ResponseEntity<?> creditApply(@Valid @RequestBody ApplicationSaveEntityDto saveEntityDto) {
         try {
-            validationForApplication(saveEntityDto);
+            creditAppService.validationForApplication(saveEntityDto);
 
             creditAppService.createCreditApp(saveEntityDto);
-
-            // Kredi değerlendirme servisine gönder. Bunu COntroller a al
-            // creditEvaluationService.applicationEvaluation(SaveDto)
             return ResponseEntity.ok("Kredi Başvurusu Alındı");
         }catch (CommonException ex) {
             log.error(ex.getMessage());
@@ -44,24 +40,5 @@ public class CreditAppController {
             log.error("Kredi Başvurusu tamamlanamadı.");
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
-    }
-
-    private void validationForApplication(ApplicationSaveEntityDto saveEntityDto) {
-
-        if(saveEntityDto.getUserId() == null || saveEntityDto.getSalary() == null) {
-            throw new CommonException("Kredi başvurusu için boş bırakılmış zorunlu alanlar var.");
-        }
-
-        Optional<User> optionalUser = userEntityService.findById(saveEntityDto.getUserId());
-        if(!optionalUser.isPresent()) {
-            throw new UserNotFoundException("Kayıtlı kullanıcı bulunamadı");
-        }
-
-        List<ApplicationDto> allApplications = creditAppService.findAllByUserId(saveEntityDto.getUserId());
-        if(!allApplications.isEmpty()) {
-            throw new CommonException("Aktif kredi başvurunuz vardır. Yeni kredi başvurusunda bulunamazsınız");
-        }
-
-
     }
 }

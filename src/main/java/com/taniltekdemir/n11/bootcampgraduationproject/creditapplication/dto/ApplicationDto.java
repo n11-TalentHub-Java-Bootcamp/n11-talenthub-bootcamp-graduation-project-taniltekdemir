@@ -13,7 +13,7 @@ public class ApplicationDto {
     private Long userId;
     private BigDecimal salary;
     private BigDecimal guarantee;
-    private EnumApplicationValidity applicationState;
+    private EnumApplicationValidity applicationValidity;
     private Integer creditScore;
     private LocalDate applicationDate;
 }
