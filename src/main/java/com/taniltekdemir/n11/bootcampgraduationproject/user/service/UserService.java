@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -27,6 +28,11 @@ public class UserService {
     public List<UserDto> findAll() {
         List<User> userList = userEntityService.findAll();
         return UserMapper.INSTANCE.convertUserListToUserDtoList(userList);
+    }
+
+    public User findById(Long userId) {
+        User user = userEntityService.getById(userId);
+        return user;
     }
 
     public UserDto save(UserSaveEntityDto userSaveEntityDto) {
