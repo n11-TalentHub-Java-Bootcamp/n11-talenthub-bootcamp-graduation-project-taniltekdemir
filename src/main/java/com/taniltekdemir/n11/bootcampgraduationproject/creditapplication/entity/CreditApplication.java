@@ -1,6 +1,7 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.entity;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.enums.EnumApplicationState;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.enums.EnumApplicationStatus;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.enums.EnumApplicationValidity;
 import com.taniltekdemir.n11.bootcampgraduationproject.gen.entity.BaseEntity;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
 import lombok.Data;
@@ -29,9 +30,13 @@ public class CreditApplication implements BaseEntity {
     @Column(precision = 19, scale = 0, name = "guarantee")
     private BigDecimal guarantee;
 
-    @Column(name = "state_of_applicaton")
+    @Column(name = "validity_of_applicaton")
     @Enumerated(EnumType.STRING)
-    private EnumApplicationState applicationState;
+    private EnumApplicationValidity applicationValidity;
+
+    @Column(name = "status_of_applicaton")
+    @Enumerated(EnumType.STRING)
+    private EnumApplicationStatus applicationStatus;
 
     @Transient
     @Column(name = "credit_score")

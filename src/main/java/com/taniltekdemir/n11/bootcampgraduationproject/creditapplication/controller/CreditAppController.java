@@ -27,8 +27,8 @@ public class CreditAppController {
     private final CreditAppService creditAppService;
     private final UserEntityService userEntityService;
 
-    @PostMapping
-    public ResponseEntity<?> create(@Valid @RequestBody ApplicationSaveEntityDto saveEntityDto) {
+    @PostMapping("/apply")
+    public ResponseEntity<?> creditApply(@Valid @RequestBody ApplicationSaveEntityDto saveEntityDto) {
         try {
             validationForApplication(saveEntityDto);
 

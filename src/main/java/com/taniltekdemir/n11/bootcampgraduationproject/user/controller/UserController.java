@@ -77,6 +77,8 @@ public class UserController {
             }
         }
 
+
+         // GEREKSİZ ise Kaldır
         if (saveEntity.getEmail() != null && !saveEntity.getEmail().isEmpty()) {
             if (saveEntity.getEmail().contains("ı") ||
                     saveEntity.getEmail().contains("İ") ||

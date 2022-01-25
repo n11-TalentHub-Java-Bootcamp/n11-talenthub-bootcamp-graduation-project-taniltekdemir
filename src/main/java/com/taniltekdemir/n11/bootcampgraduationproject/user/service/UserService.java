@@ -32,7 +32,7 @@ public class UserService {
         validateUserRequest(userSaveEntityDto.getTckn());
         User user = UserMapper.INSTANCE.convertUserSaveEntityDtoToUser(userSaveEntityDto);
         String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
+//        user.setPassword(encodedPassword);
         user = userEntityService.save(user);
         return UserMapper.INSTANCE.convertUserToUserDto(user);
     }

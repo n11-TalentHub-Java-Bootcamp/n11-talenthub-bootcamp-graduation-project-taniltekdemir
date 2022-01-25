@@ -1,14 +1,14 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.enums;
 
-public enum EnumApplicationState {
+public enum EnumApplicationStatus {
 
-    ACTIVE("ACTIVE"),
-    PASSIVE("PASSIVE")
+    WAITING("WAITING"),
+    EVALUATED("EVALUATED")
     ;
 
     private String type;
 
-    EnumApplicationState(String type) {
+    EnumApplicationStatus(String type) {
         this.type = type;
     }
 

@@ -3,6 +3,7 @@ package com.taniltekdemir.n11.bootcampgraduationproject.user.dto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.enums.EnumUserType;
 import lombok.Data;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,6 +22,7 @@ public class UserSaveEntityDto {
     @NotNull
     @Size(min = 10)
     private String telephone;
+    @Email
     private String email;
     @NotNull
     private String dateOfBirth;
