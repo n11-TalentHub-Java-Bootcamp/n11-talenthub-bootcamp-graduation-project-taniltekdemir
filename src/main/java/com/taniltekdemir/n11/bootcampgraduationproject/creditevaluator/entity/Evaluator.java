@@ -9,14 +9,14 @@ import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.
 
 import java.math.BigDecimal;
 
-public class Eveluator {
+public class Evaluator {
 
     private Strategy strategy;
     private Integer creditScore;
     private BigDecimal salary;
     private BigDecimal guarantee;
 
-    public Eveluator(Integer creditScore, BigDecimal salary, BigDecimal guarantee) {
+    public Evaluator(Integer creditScore, BigDecimal salary, BigDecimal guarantee) {
         this.creditScore = creditScore;
         this.salary = salary;
         this.guarantee = guarantee;

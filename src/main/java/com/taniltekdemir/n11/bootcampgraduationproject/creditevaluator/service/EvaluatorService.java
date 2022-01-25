@@ -1,7 +1,7 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.service;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.dto.EvaluatonDto;
-import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.entity.Eveluator;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.dto.EvaluationDto;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.entity.Evaluator;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.substrategy.payload.EvaluationResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,11 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class EvaluatorService {
 
-    public EvaluationResult calculate(EvaluatonDto evaluatonDto) {
+    public EvaluationResult calculate(EvaluationDto evaluationDto) {
 
-        Eveluator eveluator = new Eveluator(evaluatonDto.getScore(), evaluatonDto.getSalary(), evaluatonDto.getGuarantee());
+        Evaluator evaluator = new Evaluator(evaluationDto.getScore(), evaluationDto.getSalary(), evaluationDto.getGuarantee());
 
-        return eveluator.executeStrategy();
+        return evaluator.executeStrategy();
 
     }
 

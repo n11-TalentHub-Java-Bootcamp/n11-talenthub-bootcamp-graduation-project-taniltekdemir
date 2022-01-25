@@ -5,7 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class EvaluatonDto {
+public class EvaluationDto {
 
     private Integer score;
     private BigDecimal salary;
