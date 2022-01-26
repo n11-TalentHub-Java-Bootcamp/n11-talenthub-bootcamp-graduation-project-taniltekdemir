@@ -1,58 +1,81 @@
 import React, {Component} from 'react';
-import { Button, Col, Form, FormGroup, Input, Label } from "reactstrap";
-import Datetime from 'react-datetime';
-import moment from 'moment';
-import 'moment/locale/tr';
-import "react-datetime/css/react-datetime.css";
+import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
+import Datetime from "react-datetime";
+import moment from "moment";
 import {request} from "../apiUtils/ApiUtils";
 import alertify from "alertifyjs";
+
 /**
- * Created at 26.01.2022.
+ * Created at 27.01.2022.
  *
  * @author: Anil Tekdemir
  */
 
-class RegisterPage extends Component {
+class UserProfilePage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            name: "",
-            surname: "",
-            tckn: "",
-            dateOfBirth: "",
-            phone: "",
-            email: "",
-            password: ""
+            user: {
+                name: "",
+                surname: "",
+                tckn: "",
+                dateOfBirth: "",
+                telephone: "",
+                email: ""
+            }
         }
     }
 
-    editHandleInputChange = (event) => {
-        const target = event.target;
-        let value = target.value;
-        let name = target.name;
-        this.setState({ [name]: value });
+    componentDidMount() {
+        this.getUserInfo();
+    }
+
+    editHandleInputChange = (e) => {
+        let {name, value, type} = e.target;
+        let user = this.state.user;
+        user[name]= value;
+        this.setState({ user });
     };
 
-    saveUser = (e) => {
+    updateUser = (e) => {
         e.preventDefault();
         let payload = {
-            tckn: this.state.tckn,
-            surname: this.state.surname,
-            name: this.state.name,
-            dateOfBirth: this.state.dateOfBirth,
-            telephone: this.state.phone,
-            password: this.state.password,
-            email: this.state.email
+            id: sessionStorage.getItem('currentUserId'),
+            tckn: this.state.user.tckn,
+            surname: this.state.user.surname,
+            name: this.state.user.name,
+            dateOfBirth: this.state.user.dateOfBirth,
+            telephone: this.state.user.telephone,
+            password: this.state.user.password,
+            email: this.state.user.email,
+            userType: "CUSTOMER"
         }
         let params = {
-            url: `auth/register`,
+            url: `users/updateUser`,
             method: "post",
             data: payload
         }
         request(params)
             .then(function (response) {
                 alertify.success("Kullanıcı kaydedildi");
+            }).catch(function (error) {
+            alertify.error(error.response.data);
+        })
+    }
+
+    getUserInfo = () =>{
+        let self = this;
+        let userId = sessionStorage.getItem('currentUserId');
+        let params = {
+            url: `users/` + userId,
+            method: "get",
+        }
+        request(params)
+            .then(function (response) {
+                if(response.data && response.data != null) {
+                    self.setState({user: response.data})
+                }
             }).catch(function (error) {
             alertify.error(error.response.data);
         })
@@ -82,8 +105,8 @@ class RegisterPage extends Component {
                                     autoFocus
                                     id="name"
                                     name="name"
-                                    value={this.state.name}
-                                    onChange={this.editHandleInputChange}
+                                    value={this.state.user.name}
+                                    onChange={(e) => this.editHandleInputChange(e)}
                                     type="text" />
                             </Col>
 
@@ -98,8 +121,8 @@ class RegisterPage extends Component {
                                     autoFocus
                                     id="surname"
                                     name="surname"
-                                    value={this.state.surname}
-                                    onChange={this.editHandleInputChange}
+                                    value={this.state.user.surname}
+                                    onChange={(e) => this.editHandleInputChange(e)}
                                     type="text" />
                             </Col>
                         </FormGroup>
@@ -113,8 +136,8 @@ class RegisterPage extends Component {
                                     autoFocus
                                     id="tckn"
                                     name="tckn"
-                                    value={this.state.tckn}
-                                    onChange={this.editHandleInputChange}
+                                    value={this.state.user.tckn}
+                                    onChange={(e) => this.editHandleInputChange(e)}
                                     type="text" />
                             </Col>
                         </FormGroup>
@@ -126,9 +149,9 @@ class RegisterPage extends Component {
                                           input={true}
                                           closeOnSelect={true}
                                           value={
-                                              moment(this.state.dateOfBirth, "YYYY-MM-DD", true).isValid() ?
-                                                  moment(this.state.dateOfBirth).format("DD-MM-YYYY") :
-                                                  this.state.dateOfBirth
+                                              moment(this.state.user.dateOfBirth, "YYYY-MM-DD", true).isValid() ?
+                                                  moment(this.state.user.dateOfBirth).format("DD-MM-YYYY") :
+                                                  this.state.user.dateOfBirth
                                           }
                                           dateFormat="DD-MM-YYYY"
                                           timeFormat={false}
@@ -153,8 +176,8 @@ class RegisterPage extends Component {
                                     autoFocus
                                     id="phone"
                                     name="phone"
-                                    value={this.state.phone}
-                                    onChange={this.editHandleInputChange}
+                                    value={this.state.user.telephone}
+                                    onChange={(e) => this.editHandleInputChange(e)}
                                     type="text" />
                             </Col>
                         </FormGroup>
@@ -168,28 +191,13 @@ class RegisterPage extends Component {
                                     autoFocus
                                     id="email"
                                     name="email"
-                                    value={this.state.email}
-                                    onChange={this.editHandleInputChange}
+                                    value={this.state.user.email}
+                                    onChange={(e) => this.editHandleInputChange(e)}
                                     type="text" />
                             </Col>
                         </FormGroup>
-                        <FormGroup row className={"password"}>
-                            <Label sm={4}>Parolanız </Label>
-                            <Col sm={8}>
-                                <Input
-                                    placeholder={"Parolanızı giriniz."}
-                                    className={'username'}
-                                    autoComplete="off"
-                                    autoFocus
-                                    id="password"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.editHandleInputChange}
-                                    type="password" />
-                            </Col>
-                        </FormGroup>
                         <div className="text-center">
-                            <Button onClick={this.saveUser}>Kaydet
+                            <Button onClick={this.updateUser}>Değişiklikleri Kaydet
                             </Button>
                         </div>
                     </Form>
@@ -199,4 +207,4 @@ class RegisterPage extends Component {
     }
 }
 
-export default RegisterPage;
+export default UserProfilePage;

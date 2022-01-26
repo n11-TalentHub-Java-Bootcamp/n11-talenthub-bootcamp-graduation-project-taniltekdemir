@@ -1,27 +1,29 @@
 import './App.css';
 import React from 'react';
-import {Route, Routes} from 'react-router-dom';
+import {Redirect, Route, Routes, Switch} from 'react-router-dom';
 import MainPage from "./pages/MainPage";
 import Topbar from "./components/Topbar";
 import LoginPage from "./pages/LoginPage";
 import InfoPage from "./pages/InfoPage";
 import RegisterPage from "./pages/RegisterPage";
 import InterrogatePage from "./pages/InterrogatePage";
+import ApplicationPage from "./pages/ApplicationPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
 class App extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            isLoggedOn: false
+            isLoggedOn: false,
+            renderKey:  Math.floor((Math.random() * 10) + 1),
         }
     }
+
     login = () =>{
-        this.setState({isLoggedOn:true})
+        this.setState({renderKey:Math.floor((Math.random() * 10) + 1) })
     }
 
     logout = () =>{
-
-        this.setState({isLoggedOn:false})
         sessionStorage.clear();
     }
 
@@ -37,15 +39,20 @@ class App extends React.Component{
     render() {
         const isLogged = this.getIsLogged();
         return (
-            <div className="App">
+            <div className="App" key={this.state.renderKey}>
                 <Topbar isLoggedOn={isLogged} logout={this.logout} ></Topbar>
-                <Routes>
-                    <Route path="/" element={<MainPage></MainPage>}></Route>
-                    <Route path="/login" element={<LoginPage login={this.login}></LoginPage>}></Route>
-                    <Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
-                    <Route path="/interrogate" element={<InterrogatePage></InterrogatePage>}></Route>
-                    <Route path="/info" element={<InfoPage></InfoPage>}></Route>
-                </Routes>
+                <Switch>
+                    <Route path="/login"                    render={(props) => <LoginPage login={() => this.login()}  {...props}/>}/>
+                    <Route exact path="/"                   render={(props) => <MainPage  {...props}/>}/>
+                    <Route exact path="/register"           render={(props) => <RegisterPage  {...props}/>}/>
+                    <Route exact path="/interrogate"        render={(props) => <InterrogatePage  {...props}/>}/>
+                    <Route exact path="/info"               render={(props) => <InfoPage  {...props}/>}/>
+                    <Route exact path="/apply"              render={(props) => <ApplicationPage  {...props}/>}/>
+                    <Route exact path="/profile"              render={(props) => <UserProfilePage  {...props}/>}/>
+                    <Redirect to="/"/>
+                </Switch>
+
+
             </div>
         );
     }

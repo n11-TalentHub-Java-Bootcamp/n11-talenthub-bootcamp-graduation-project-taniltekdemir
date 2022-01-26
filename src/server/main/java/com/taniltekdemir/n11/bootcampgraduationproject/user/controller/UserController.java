@@ -4,6 +4,7 @@ import com.taniltekdemir.n11.bootcampgraduationproject.common.exception.CommonEx
 import com.taniltekdemir.n11.bootcampgraduationproject.common.helper.TcknUtils;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
+import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -60,6 +61,17 @@ public class UserController {
             log.info("{} id li kullanıcı silindi", id);
         } catch (CommonException e) {
             log.error("Kullanıcı silinemedi");
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findByUserId(@PathVariable Long id){
+        try {
+            User user = userService.findById(id);
+            return ResponseEntity.ok(user);
+        } catch (CommonException e) {
+            log.error("Kullanıcı bulunamadı");
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 

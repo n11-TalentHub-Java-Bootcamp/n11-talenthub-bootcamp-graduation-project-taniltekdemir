@@ -10,6 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.Map;
+
 @Slf4j
 @RestController
 @RequestMapping("/auth")
@@ -20,13 +23,13 @@ public class AuthenticationController {
     private final ManagerService managerService;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequestDto loginRequestDto){
+    public Map<String, String> login(@RequestBody LoginRequestDto loginRequestDto){
 
         return authenticationService.login(loginRequestDto);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UserSaveEntityDto userSaveEntityDto){
+    public ResponseEntity<?> register(@Valid @RequestBody UserSaveEntityDto userSaveEntityDto){
         try {
             UserDto userDto = authenticationService.registerCustomer(userSaveEntityDto);
             return ResponseEntity.ok(userDto);

@@ -61,6 +61,7 @@ public class UserService {
         if ((saveEntity.getName() == null || saveEntity.getName().isEmpty() ) ||
                 (saveEntity.getSurname() == null || saveEntity.getSurname().isEmpty()) ||
                     (saveEntity.getDateOfBirth() == null || saveEntity.getDateOfBirth().isEmpty()) ||
+                        (saveEntity.getPassword() == null || saveEntity.getPassword().isEmpty()) ||
                         (saveEntity.getTckn() == null || saveEntity.getTckn().isEmpty())) {
             throw new CommonException("Boş bırakılmış zorunlu alanlar var.");
         }

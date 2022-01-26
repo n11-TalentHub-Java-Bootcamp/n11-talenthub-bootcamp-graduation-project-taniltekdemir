@@ -7,8 +7,8 @@ export function request(options, headers) {
 
     defaultHeaders = Object.assign(defaultHeaders, headers);
 
-    if (sessionStorage.getItem("accessToken")) {
-        defaultHeaders['Authorization'] = 'Bearer ' + sessionStorage.getItem("accessToken");
+    if (sessionStorage.getItem("token")) {
+        defaultHeaders['Authorization'] = sessionStorage.getItem("token");
     }
 
     const defaults = {headers: defaultHeaders, baseURL: "/"};

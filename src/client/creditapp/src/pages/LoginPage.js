@@ -22,8 +22,8 @@ class LoginPage extends Component {
         let self = this;
         e.preventDefault();
         let payload = {
-            username: this.state.username,
-            password: this.state.password
+            username: self.state.username,
+            password: self.state.password
         }
         let params = {
             url: `auth/login`,
@@ -33,10 +33,11 @@ class LoginPage extends Component {
         request(params)
             .then(function (response) {
                 alertify.success("Giriş Başarılı");
-                sessionStorage.setItem('token', response.data);
-                sessionStorage.setItem('username', this.state.username);
-                self.props.history.push("/info");
-                self.props.login()
+                sessionStorage.setItem('token', response.data.token);
+                sessionStorage.setItem('currentUserId', response.data.currentUserId);
+                sessionStorage.setItem('currentUserName', response.data.currentUserName);
+                self.props.login();
+                self.props.history.push("/");
             }).catch(function (error) {
             alertify.error("Hatalı işlem");
         })
