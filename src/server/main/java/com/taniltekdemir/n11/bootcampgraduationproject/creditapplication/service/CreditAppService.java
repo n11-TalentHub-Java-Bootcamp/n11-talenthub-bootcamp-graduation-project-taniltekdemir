@@ -39,7 +39,7 @@ public class CreditAppService {
         creditApplication.setApplicationDate(LocalDate.now());
         creditApplication.setApplicationStatus(EnumApplicationStatus.EVALUATED);
         creditApplication = creditAppEntityService.save(creditApplication);
-
+        log.info("{} userId li kullanıcının kredi basşvurusu kaydedildi", saveEntityDto.getUserId());
         return CreditAppMapper.INSTANCE.convertCreditApplicationToApplicationDto(creditApplication);
     }
 
@@ -54,6 +54,7 @@ public class CreditAppService {
     public void validationForApplication(ApplicationSaveEntityDto saveEntityDto) {
 
         if(saveEntityDto.getUserId() == null || saveEntityDto.getSalary() == null) {
+            log.error("Kredi başvurusu için boş bırakılmış zorunlu alanlar var.");
             throw new CommonException("Kredi başvurusu için boş bırakılmış zorunlu alanlar var.");
         }
 
@@ -64,6 +65,7 @@ public class CreditAppService {
 
         ApplicationDto application = findAllByUserId(saveEntityDto.getUserId());
         if(application != null) {
+            log.error("{} userId li kullanıcının aktif bir kredi başvursu vardır", saveEntityDto.getUserId());
             throw new CommonException("Aktif kredi başvurunuz vardır. Yeni kredi başvurusunda bulunamazsınız");
         }
     }

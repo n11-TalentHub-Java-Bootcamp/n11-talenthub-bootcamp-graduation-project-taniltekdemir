@@ -8,15 +8,13 @@ import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.mapper.UserMapper;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.repository.UserRepository;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.entityService.UserEntityService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
-import java.util.Objects;
 
 @Slf4j
 @Service

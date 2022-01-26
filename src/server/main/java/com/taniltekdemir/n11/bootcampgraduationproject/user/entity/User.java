@@ -2,13 +2,17 @@ package com.taniltekdemir.n11.bootcampgraduationproject.user.entity;
 
 import com.taniltekdemir.n11.bootcampgraduationproject.gen.entity.BaseEntity;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.enums.EnumUserType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name= "USR_USER")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements BaseEntity {
 
     @Id
@@ -40,4 +44,8 @@ public class User implements BaseEntity {
 
     @Column(name = "password")
     private String password;
+
+    public User(Long id) {
+        this.id = id;
+    }
 }
