@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/managers")
+@RequestMapping("/managers")
 @CrossOrigin
 @RequiredArgsConstructor
 public class ManagerController {

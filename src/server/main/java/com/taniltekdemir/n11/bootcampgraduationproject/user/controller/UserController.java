@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/users")
 @CrossOrigin
 @RequiredArgsConstructor
 public class UserController {
@@ -32,7 +32,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<?> save(@Valid @RequestBody UserSaveEntityDto userSaveEntityDto) {
 
-        validationForSaveUser(userSaveEntityDto);
+        userService.validationForSaveUser(userSaveEntityDto);
 
         UserDto userDto = userService.save(userSaveEntityDto);
 
@@ -59,41 +59,4 @@ public class UserController {
         }
     }
 
-    private void validationForSaveUser(UserSaveEntityDto saveEntity) {
-        if (saveEntity.getName().isEmpty() || saveEntity.getSurname().isEmpty()
-                || saveEntity.getDateOfBirth().isEmpty() || saveEntity.getTckn().isEmpty()) {
-            throw new CommonException("Boş bırakılmış zorunlu alanlar var.");
-        }
-
-        if (!TcknUtils.isValidTckn(saveEntity.getTckn().toCharArray(), 0)) {
-            throw new CommonException("Geçerli olmayan tckn girildi.");
-        }
-
-        if (saveEntity.getTelephone() == null || saveEntity.getTelephone().isEmpty()) {
-            throw new CommonException("Telefon numarası girilmelidir.");
-        } else {
-            if (!(saveEntity.getTelephone().length() == 10 || saveEntity.getTelephone().length() == 11)) {
-                throw new CommonException("Telefon numarası uzunluğu hatalı girildi.");
-            }
-        }
-
-
-         // GEREKSİZ ise Kaldır
-        if (saveEntity.getEmail() != null && !saveEntity.getEmail().isEmpty()) {
-            if (saveEntity.getEmail().contains("ı") ||
-                    saveEntity.getEmail().contains("İ") ||
-                    saveEntity.getEmail().contains("ş") ||
-                    saveEntity.getEmail().contains("Ş") ||
-                    saveEntity.getEmail().contains("ç") ||
-                    saveEntity.getEmail().contains("Ç") ||
-                    saveEntity.getEmail().contains("ö") ||
-                    saveEntity.getEmail().contains("Ö") ||
-                    saveEntity.getEmail().contains("ü") ||
-                    saveEntity.getEmail().contains("Ü") ||
-                    saveEntity.getEmail().contains("ğ") ||
-                    saveEntity.getEmail().contains("Ğ")) {
-                throw new CommonException("E posta adresi Türkçe karakter içeremez.");
-            }
-        }
-    }
 }

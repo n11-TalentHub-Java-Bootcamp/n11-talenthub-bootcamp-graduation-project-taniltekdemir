@@ -6,12 +6,11 @@ import com.taniltekdemir.n11.bootcampgraduationproject.creditmanager.service.Man
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -28,9 +27,13 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserSaveEntityDto userSaveEntityDto){
-
-        UserDto userDto = authenticationService.registerCustomer(userSaveEntityDto);
-        return ResponseEntity.ok(userDto);
+        try {
+            UserDto userDto = authenticationService.registerCustomer(userSaveEntityDto);
+            return ResponseEntity.ok(userDto);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 }

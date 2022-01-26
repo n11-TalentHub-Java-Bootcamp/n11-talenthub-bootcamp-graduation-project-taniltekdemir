@@ -1,5 +1,7 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.user.service;
 
+import com.taniltekdemir.n11.bootcampgraduationproject.common.exception.CommonException;
+import com.taniltekdemir.n11.bootcampgraduationproject.common.helper.TcknUtils;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
@@ -35,6 +37,7 @@ public class UserService {
     }
 
     public UserDto save(UserSaveEntityDto userSaveEntityDto) {
+        validationForSaveUser(userSaveEntityDto);
         validateUserRequest(userSaveEntityDto.getTckn());
         User user = UserMapper.INSTANCE.convertUserSaveEntityDtoToUser(userSaveEntityDto);
         String encodedPassword = passwordEncoder.encode(user.getPassword());
@@ -48,6 +51,42 @@ public class UserService {
         if (user != null) {
             log.error("Kayıtlı Tckn ile işlem kayıt işlemi denendi.");
             throw new RuntimeException("Kayıtlı Tckn ile işlem yaptınız.");
+        }
+    }
+
+    public void validationForSaveUser(UserSaveEntityDto saveEntity) {
+        if (saveEntity.getName().isEmpty() || saveEntity.getSurname().isEmpty()
+                || saveEntity.getDateOfBirth().isEmpty() || saveEntity.getTckn().isEmpty()) {
+            throw new CommonException("Boş bırakılmış zorunlu alanlar var.");
+        }
+
+        if (!TcknUtils.isValidTckn(saveEntity.getTckn().toCharArray(), 0)) {
+            throw new CommonException("Geçerli olmayan tckn girildi.");
+        }
+
+        if (saveEntity.getTelephone() == null || saveEntity.getTelephone().isEmpty()) {
+            throw new CommonException("Telefon numarası girilmelidir.");
+        } else {
+            if (!(saveEntity.getTelephone().length() == 10 || saveEntity.getTelephone().length() == 11)) {
+                throw new CommonException("Telefon numarası uzunluğu hatalı girildi.");
+            }
+        }
+
+        if (saveEntity.getEmail() != null && !saveEntity.getEmail().isEmpty()) {
+            if (saveEntity.getEmail().contains("ı") ||
+                    saveEntity.getEmail().contains("İ") ||
+                    saveEntity.getEmail().contains("ş") ||
+                    saveEntity.getEmail().contains("Ş") ||
+                    saveEntity.getEmail().contains("ç") ||
+                    saveEntity.getEmail().contains("Ç") ||
+                    saveEntity.getEmail().contains("ö") ||
+                    saveEntity.getEmail().contains("Ö") ||
+                    saveEntity.getEmail().contains("ü") ||
+                    saveEntity.getEmail().contains("Ü") ||
+                    saveEntity.getEmail().contains("ğ") ||
+                    saveEntity.getEmail().contains("Ğ")) {
+                throw new CommonException("E posta adresi Türkçe karakter içeremez.");
+            }
         }
     }
 

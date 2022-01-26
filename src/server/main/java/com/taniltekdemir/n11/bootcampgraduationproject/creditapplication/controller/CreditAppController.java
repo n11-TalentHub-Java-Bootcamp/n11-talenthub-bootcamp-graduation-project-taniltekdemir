@@ -12,7 +12,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/applications")
+@RequestMapping("/applications")
 @CrossOrigin
 @RequiredArgsConstructor
 public class CreditAppController {
