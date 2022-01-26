@@ -13,8 +13,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Service
@@ -33,6 +35,9 @@ public class UserService {
 
     public User findById(Long userId) {
         User user = userEntityService.getById(userId);
+        if(user == null) {
+            throw new RuntimeException("Kullancı bulunamadı");
+        }
         return user;
     }
 
@@ -55,8 +60,10 @@ public class UserService {
     }
 
     public void validationForSaveUser(UserSaveEntityDto saveEntity) {
-        if (saveEntity.getName().isEmpty() || saveEntity.getSurname().isEmpty()
-                || saveEntity.getDateOfBirth().isEmpty() || saveEntity.getTckn().isEmpty()) {
+        if ((saveEntity.getName() == null || saveEntity.getName().isEmpty() ) ||
+                (saveEntity.getSurname() == null || saveEntity.getSurname().isEmpty()) ||
+                    (saveEntity.getDateOfBirth() == null || saveEntity.getDateOfBirth().isEmpty()) ||
+                        (saveEntity.getTckn() == null || saveEntity.getTckn().isEmpty())) {
             throw new CommonException("Boş bırakılmış zorunlu alanlar var.");
         }
 

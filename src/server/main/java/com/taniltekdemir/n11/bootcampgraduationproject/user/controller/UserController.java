@@ -31,12 +31,15 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<?> save(@Valid @RequestBody UserSaveEntityDto userSaveEntityDto) {
-
-        userService.validationForSaveUser(userSaveEntityDto);
-
-        UserDto userDto = userService.save(userSaveEntityDto);
-
-        return ResponseEntity.ok(userDto);
+        try {
+            userService.validationForSaveUser(userSaveEntityDto);
+            UserDto userDto = userService.save(userSaveEntityDto);
+            log.info("{} tckn li Kullanıcı kaydedildi", userSaveEntityDto.getTckn());
+            return ResponseEntity.ok(userDto);
+        }catch (Exception e) {
+            log.error("{} tckn li Kullanıcı bilgisi kaydedilemedi", userSaveEntityDto.getTckn());
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/updateUser")
@@ -45,7 +48,7 @@ public class UserController {
             UserDto updateUser = userService.update(userDto);
             return ResponseEntity.ok(updateUser);
         } catch(CommonException e) {
-            log.error("Kullanıcı bilgisi güncellenemedi");
+            log.error("{} tckn li Kullanıcı bilgisi güncellenemedi", userDto.getTckn());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -54,6 +57,7 @@ public class UserController {
     public void delete(@PathVariable Long id){
         try {
             userService.delete(id);
+            log.info("{} id li kullanıcı silindi", id);
         } catch (CommonException e) {
             log.error("Kullanıcı silinemedi");
         }
