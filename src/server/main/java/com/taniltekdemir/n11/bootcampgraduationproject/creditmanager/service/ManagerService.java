@@ -15,13 +15,13 @@ import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class ManagerService {
 
     private final CreditAppService creditAppService;
@@ -30,22 +30,26 @@ public class ManagerService {
     private final InformService informService;
     private final UserService userService;
 
-
+    @Transactional
     public EvaluationResult management(ApplicationSaveEntityDto saveEntityDto) {
 
-        ApplicationDto applicationDto = creditAppService.createCreditApp(saveEntityDto);
-        Integer creditScore = creditScoreService.findByUserId(saveEntityDto.getUserId());
+            ApplicationDto applicationDto = creditAppService.createCreditApp(saveEntityDto);
+            Integer creditScore = creditScoreService.findByUserId(saveEntityDto.getUserId());
 
-        EvaluationDto evaluationDto = EvaluationMapper.INSTANCE.convertApplicationDtoEvaluationDto(applicationDto);
-        evaluationDto.setScore(creditScore);
-        EvaluationResult evaluationResult = evaluatorService.calculateCredit(evaluationDto);
-        inform(saveEntityDto, evaluationResult);
-        return evaluationResult;
+            EvaluationDto evaluationDto = EvaluationMapper.INSTANCE.convertApplicationDtoEvaluationDto(applicationDto);
+            evaluationDto.setScore(creditScore);
+            EvaluationResult evaluationResult = evaluatorService.calculateCredit(evaluationDto);
+            inform(saveEntityDto, evaluationResult);
+            return evaluationResult;
     }
 
     private void inform(ApplicationSaveEntityDto saveEntityDto, EvaluationResult evaluationResult) {
-        User user = userService.findById(saveEntityDto.getUserId());
-        informService.information(new InformDto(user.getTelephone(), user.getEmail(), evaluationResult.getLimit(), evaluationResult.getEvaluateStatus()));
+        try {
+            User user = userService.findById(saveEntityDto.getUserId());
+            informService.information(new InformDto(user.getTelephone(), user.getEmail(), evaluationResult.getLimit(), evaluationResult.getEvaluateStatus()));
+        } catch (Exception e) {
+            log.error("Kredi sonucu bildirimi yapılamadı: {}", e.getMessage());
+        }
     }
 
     public EvaluateReport getResultByApplicationId(Long applicationId) {

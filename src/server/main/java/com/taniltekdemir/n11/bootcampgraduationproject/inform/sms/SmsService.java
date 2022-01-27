@@ -1,41 +1,79 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.inform.sms;
 
-import java.io.*;
-import java.net.*;
+import com.taniltekdemir.n11.bootcampgraduationproject.common.exception.CommonException;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.enums.EnumEvaluateStatus;
+import com.taniltekdemir.n11.bootcampgraduationproject.inform.dto.InformDto;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import net.bytebuddy.implementation.bytecode.Throw;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Scanner;
+
+@Slf4j
+@Service
+@Transactional
 public class SmsService {
-        public void sendSMS() {
+
+    public Boolean sendSmsMessage(@RequestBody InformDto informDto) {
+        try {
+            sendSMS(informDto);
+            log.info("Kredi sonucu sms olarak gönderildi");
+            return true;
+        }catch (Exception e){
+            log.error("SMS gönderilemedi, lütfen kontrol ediniz");
+            return false;
+        }
+    }
+
+        public void sendSMS(InformDto informDto) {
+            String content;
+            String receiver = informDto.getPhone();
+            if(informDto.getEvaluateStatus().equals(EnumEvaluateStatus.ACCEPTED)) {
+                content = "Basvuru sonucunuz onaylanmistir \n kredi limitiniz " + informDto.getLimit() + " olarak belirlenmistir.";
+            } else {
+               content = "Basvuru sonucunuz rededilmistir.";
+            }
+            String apiUrl = "https://api.vatansms.net/api/v1/1toN";
+            String jsonFormData = "{" +
+                    " \"api_id\": \"56d50eacf85bfc4ee2528898\", " +
+                    "\"api_key\": \"9d36cfc9bb1ca65d33c7e203\", " +
+                    "\"sender\": \"SMS TEST\", \"message_type\": " +
+                    "\"normal\", \"message\": \" " + content+ "\", " +
+                    "\"phones\": [ \""+ receiver +"\" ] }";
+
             try {
-                URL u = new URL("http://panel.vatansms.com/panel/smsgonder1Npost.php");
-                URLConnection uc = u.openConnection();
-                HttpURLConnection connection = (HttpURLConnection) uc;
-                connection.setDoOutput(true);
-                connection.setDoInput(true);
-                connection.setRequestMethod("POST");
-                OutputStream out = connection.getOutputStream();
-                OutputStreamWriter wout = new OutputStreamWriter(out, "UTF-8");
-                wout.write("data=<sms>"+
-                        "<kno>KullanıcıNumaranız</kno>"+
-                        "<kulad>KullanıcıAdınız</kulad>"+
-                        "<sifre>Şifreniz</sifre>"+
-                        "<gonderen>GönderenAdınız</gonderen>"+
-                        "<mesaj>Deneme Mesajıdır</mesaj>"+
-                        "<numaralar>5554443322,5553334422</numaralar>"+
-                        "<tur>Normal</tur>"+ // Normal yada Turkce olabilir
-                        "</sms>");
-                //Xml'in içinde aşağıdaki alanları ekleyebilirsiniz.
-                // '<zaman>2013-11-05 15:00:00</zaman>'+  İleri tarihli mesaj için kullanabilirsiniz.
-                wout.flush();
-                out.close();
-                InputStream in = connection.getInputStream();
-                int c;
-                while ((c = in.read()) != -1) System.out.write(c);
-                System.out.println();
-                in.close();
-                out.close();
-                connection.disconnect();
-            } catch (IOException e) {
-                System.err.println(e);
+                URL url = new URL(apiUrl);
+
+                HttpURLConnection connect = (HttpURLConnection) url.openConnection();
+                connect.setDoOutput(true);
+                connect.setConnectTimeout(5000);
+                connect.setDoInput(true);
+                connect.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                connect.setRequestMethod("POST");
+
+                OutputStream prepareFormData = connect.getOutputStream();
+                prepareFormData.write(jsonFormData.getBytes("UTF-8"));
+                prepareFormData.close();
+
+                InputStream inputStream = new BufferedInputStream(connect.getInputStream());
+                Scanner s = new Scanner(inputStream).useDelimiter("\\A");
+                String result = s.hasNext() ? s.next() : "";
+
+                System.out.println(result);
+
+                inputStream.close();
+                connect.disconnect();
+
+            } catch (Exception e) {
+                System.out.println("Bir hata ile karşılaşıldı : " + e.getMessage());
             }
         }
 }

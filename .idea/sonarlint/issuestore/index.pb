@@ -85,10 +85,6 @@ lsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/common/exc
 usrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/common/exception/CustomizedExceptionHandler.java,5/4/54e4861a65c1baf957f44a3bf4b74467cc3fb7ea
 Ÿ
 osrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/entity/EvaluateReport.java,1/b/1b22a6e993001539269e2f8133639f36bae648f9
-Š
-Zsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/inform/sms/Dummy.java,1/4/14493c0e92610c582453d621837f8fd399f39add
-Ž
-^src/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/inform/dto/InformDto.java,f/1/f138463337394849b74baa2f0697ca720c5194a0
 §
 wsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditapplication/enums/EnumApplicationStatus.java,c/9/c9f0bab8d518522a13a942f4dbeb434d07404e2e
 ¥
@@ -165,5 +161,23 @@ Q
 !src/client/creditapp/src/index.js,b/8/b8174939b972d98fcf5276dd0f1ff0e41bc3fe0c
 ’
 bsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/dto/LoginRequestDto.java,0/a/0afaf7b54a42a080eea2f288fb833a0c391e83f8
- 
-psrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/inform/email/controller/MailController.java,5/a/5a4fb18d0c64d3f712143429cb14f30785f1af6a
+”
+dsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/dto/UserSaveEntityDto.java,9/5/95a5a57916927036a97d7438a8adddf25d003d63
+a
+1src/client/creditapp/src/pages/InterrogatePage.js,8/6/86d624ffa70e44749f61e9f069adc015620b6ef8
+]
+-src/client/creditapp/src/apiUtils/ApiUtils.js,7/3/73295e4918a0542fc2f1c482da1bc95328f923c2
+[
++src/client/creditapp/src/pages/LoginPage.js,4/0/40a5b3c800ec6a2c1bfa788b1d5d8dfb545a3d17
+¢
+rsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/controller/AuthenticationController.java,e/6/e666c56d811168e100cd09724329a4fda5beca26
+œ
+lsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/service/AuthenticationService.java,2/7/273693a770289cf49e50584b2b849e83177fd0f5
+V
+&src/client/creditapp/public/index.html,9/d/9d3ffc1f3898f017d8368ee6613a91ec58a2102d
+Q
+!src/client/creditapp/package.json,6/a/6aac9045a2f557f06653f9ad867b43bc039d714d
+V
+&src/client/creditapp/package-lock.json,6/c/6cfd12b832f183e3da91156973c326dc3115db75
+®
+~src/server/test/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/service/EvaluatorServiceDataProvider.java,5/4/5410428ea65aeaa8d0d58b753183304d30b25b78

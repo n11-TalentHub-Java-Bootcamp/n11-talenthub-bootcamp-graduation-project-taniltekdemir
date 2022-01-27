@@ -18,12 +18,14 @@ public class MailService {
 
     private final JavaMailSender javaMailSender;
 
-    public void sendEmailMessage(@RequestBody InformDto informDto) {
+    public Boolean sendEmailMessage(@RequestBody InformDto informDto) {
         try {
             sendEmail(informDto);
             log.info("Kredi sonucu eposta olarak gönderildi");
+            return true;
         }catch (Exception e){
             log.error("Mail gönderilemedi, lütfen kontrol ediniz");
+            return false;
         }
     }
 
