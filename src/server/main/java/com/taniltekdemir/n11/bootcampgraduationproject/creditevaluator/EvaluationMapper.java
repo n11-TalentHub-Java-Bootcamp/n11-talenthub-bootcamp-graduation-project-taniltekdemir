@@ -1,6 +1,6 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.dto.ApplicationDto;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapply.dto.ApplyDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.dto.EvaluationDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.dto.EvaluationSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.entity.EvaluateReport;
@@ -18,7 +18,7 @@ public interface EvaluationMapper {
             @Mapping(target = "score", ignore = true),
             @Mapping(target = "applicationId", source ="id")
     })
-    EvaluationDto convertApplicationDtoEvaluationDto(ApplicationDto applicationDto);
+    EvaluationDto convertApplicationDtoEvaluationDto(ApplyDto applyDto);
 
     @Mappings({
             @Mapping(target = "user.id", source ="userId"),

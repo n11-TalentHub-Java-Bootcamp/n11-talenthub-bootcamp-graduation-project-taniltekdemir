@@ -2,7 +2,7 @@ package com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.service.
 
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.entity.EvaluateReport;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.repository.EvaluatorRepository;
-import com.taniltekdemir.n11.bootcampgraduationproject.gen.service.BaseEntityService;
+import com.taniltekdemir.n11.bootcampgraduationproject.common.service.BaseEntityService;
 import org.springframework.stereotype.Service;
 
 @Service

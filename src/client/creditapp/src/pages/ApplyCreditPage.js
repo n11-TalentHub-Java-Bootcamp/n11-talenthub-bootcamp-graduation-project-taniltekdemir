@@ -4,77 +4,66 @@ import Datetime from "react-datetime";
 import moment from "moment";
 import {request} from "../apiUtils/ApiUtils";
 import alertify from "alertifyjs";
+import InformModal from "../components/InformModal";
 
 /**
- * Created at 27.01.2022.
+ * Created at 28.01.2022.
  *
  * @author: Anil Tekdemir
  */
 
-class UserProfilePage extends Component {
+class ApplyCreditPage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            user: {
-                name: "",
-                surname: "",
-                tckn: "",
-                dateOfBirth: "",
-                telephone: "",
-                email: ""
-            }
+            name: "",
+            surname: "",
+            tckn: "",
+            dateOfBirth: "",
+            phone: "",
+            userType: "CUSTOMER",
+            salary: "",
+            guarantee: "",
+            email: "",
+            limit: "",
+            content: "",
+            modalFlag: false
         }
     }
 
-    componentDidMount() {
-        this.getUserInfo();
-    }
-
-    editHandleInputChange = (e) => {
-        let {name, value, type} = e.target;
-        let user = this.state.user;
-        user[name]= value;
-        this.setState({ user });
+    editHandleInputChange = (event) => {
+        const target = event.target;
+        let value = target.value;
+        let name = target.name;
+        this.setState({ [name]: value });
     };
 
-    updateUser = (e) => {
+    saveApply = (e) => {
+        let self = this;
         e.preventDefault();
         let payload = {
-            id: sessionStorage.getItem('currentUserId'),
-            tckn: this.state.user.tckn,
-            surname: this.state.user.surname,
-            name: this.state.user.name,
-            dateOfBirth: this.state.user.dateOfBirth,
-            telephone: this.state.user.telephone,
-            password: this.state.user.password,
-            email: this.state.user.email,
-            userType: "CUSTOMER"
+            tckn: this.state.tckn,
+            surname: this.state.surname,
+            name: this.state.name,
+            dateOfBirth: this.state.dateOfBirth,
+            telephone: this.state.phone,
+            userType: this.state.userType,
+            email: this.state.email,
+            salary: this.state.salary,
+            guarantee: this.state.guarantee,
         }
         let params = {
-            url: `users/updateUser`,
+            url: `managers/applyCreditWithoutRegistered`,
             method: "post",
             data: payload
         }
         request(params)
             .then(function (response) {
-                alertify.success("Kullanıcı kaydedildi");
-            }).catch(function (error) {
-            alertify.error(error.response.data);
-        })
-    }
-
-    getUserInfo = () =>{
-        let self = this;
-        let userId = sessionStorage.getItem('currentUserId');
-        let params = {
-            url: `users/` + userId,
-            method: "get",
-        }
-        request(params)
-            .then(function (response) {
-                if(response.data && response.data != null) {
-                    self.setState({user: response.data})
+                if (response.data.evaluateStatus === "ACCEPTED") {
+                    self.setState({content: "ONAYLANDI", limit: response.data.limit, modalFlag: true});
+                }else {
+                    self.setState({content: "REDEDİLDİ", limit: response.data.limit, modalFlag: true});
                 }
             }).catch(function (error) {
             alertify.error(error.response.data);
@@ -88,15 +77,16 @@ class UserProfilePage extends Component {
                 <div>
                     <br></br>
                     <br></br>
-                    <h1>Kullanıcı Profili Sayfası</h1>
+                    <h1>Kredi Başvuru Sayfası</h1>
                     <br></br>
+                    <h3>Kimlik numaranızı parola olarak kullanarak sisteme giriş yapabilirsiniz.</h3>
                     <br></br>
                     <br></br>
                 </div>
                 <div className="container">
                     <Form>
                         <FormGroup row className={"name"}>
-                            <Label sm={4}>Adınız </Label>
+                            <Label sm={4}>Adınız *</Label>
                             <Col sm={8}>
                                 <Input
                                     placeholder={"Adınızı giriniz."}
@@ -105,14 +95,14 @@ class UserProfilePage extends Component {
                                     autoFocus
                                     id="name"
                                     name="name"
-                                    value={this.state.user.name}
-                                    onChange={(e) => this.editHandleInputChange(e)}
+                                    value={this.state.name}
+                                    onChange={this.editHandleInputChange}
                                     type="text" />
                             </Col>
 
                         </FormGroup>
                         <FormGroup row className={"surname"}>
-                            <Label sm={4}>Soyadınız </Label>
+                            <Label sm={4}>Soyadınız *</Label>
                             <Col sm={8}>
                                 <Input
                                     placeholder={"Soyadınızı giriniz."}
@@ -121,38 +111,39 @@ class UserProfilePage extends Component {
                                     autoFocus
                                     id="surname"
                                     name="surname"
-                                    value={this.state.user.surname}
-                                    onChange={(e) => this.editHandleInputChange(e)}
+                                    value={this.state.surname}
+                                    onChange={this.editHandleInputChange}
                                     type="text" />
                             </Col>
                         </FormGroup>
                         <FormGroup row className={"tckn"}>
-                            <Label sm={4}>Kimlik Numaranız </Label>
+                            <Label sm={4}>Kimlik Numaranız *</Label>
                             <Col sm={8}>
                                 <Input
                                     placeholder={"Kimlik Numaranızı giriniz."}
                                     className={'tckn'}
                                     autoComplete="off"
-                                    disabled={true}
                                     autoFocus
                                     id="tckn"
                                     name="tckn"
-                                    value={this.state.user.tckn}
-                                    onChange={(e) => this.editHandleInputChange(e)}
+                                    maxLength={11}
+                                    minLength={11}
+                                    value={this.state.tckn}
+                                    onChange={this.editHandleInputChange}
                                     type="text" />
                             </Col>
                         </FormGroup>
                         <FormGroup row className={"dateOfBirth"}>
-                            <Label sm={4}>Doğum Tarihiniz </Label>
+                            <Label sm={4}>Doğum Tarihiniz *</Label>
                             <Col sm={8}>
                                 <Datetime locale="tr"
                                           className="datepicker"
                                           input={true}
                                           closeOnSelect={true}
                                           value={
-                                              moment(this.state.user.dateOfBirth, "YYYY-MM-DD", true).isValid() ?
-                                                  moment(this.state.user.dateOfBirth).format("DD-MM-YYYY") :
-                                                  this.state.user.dateOfBirth
+                                              moment(this.state.dateOfBirth, "YYYY-MM-DD", true).isValid() ?
+                                                  moment(this.state.dateOfBirth).format("DD-MM-YYYY") :
+                                                  this.state.dateOfBirth
                                           }
                                           dateFormat="DD-MM-YYYY"
                                           timeFormat={false}
@@ -167,20 +158,20 @@ class UserProfilePage extends Component {
                                 />
                             </Col>
                         </FormGroup>
-                        <FormGroup row className={"telephone"}>
-                            <Label sm={4}>Telefon Numaranız </Label>
+                        <FormGroup row className={"phone"}>
+                            <Label sm={4}>Telefon Numaranız *</Label>
                             <Col sm={8}>
                                 <Input
                                     placeholder={"Telefon Numaranızı giriniz."}
-                                    className={'telephone'}
+                                    className={'phone'}
                                     autoComplete="off"
                                     autoFocus
-                                    id="telephone"
-                                    name="telephone"
-                                    minLength={10}
+                                    id="phone"
+                                    name="phone"
                                     maxLength={10}
-                                    value={this.state.user.telephone}
-                                    onChange={(e) => this.editHandleInputChange(e)}
+                                    minLength={10}
+                                    value={this.state.phone}
+                                    onChange={this.editHandleInputChange}
                                     type="text" />
                             </Col>
                         </FormGroup>
@@ -194,20 +185,57 @@ class UserProfilePage extends Component {
                                     autoFocus
                                     id="email"
                                     name="email"
-                                    value={this.state.user.email}
-                                    onChange={(e) => this.editHandleInputChange(e)}
+                                    value={this.state.email}
+                                    onChange={this.editHandleInputChange}
                                     type="text" />
                             </Col>
                         </FormGroup>
+                        <FormGroup row className={"email"}>
+                            <Label sm={4}>Maaş Bilginiz * </Label>
+                            <Col sm={8}>
+                                <Input
+                                    placeholder={"Maaş bilginizi giriniz."}
+                                    className={'salary'}
+                                    autoComplete="off"
+                                    autoFocus
+                                    id="salary"
+                                    name="salary"
+                                    value={this.state.salary}
+                                    onChange={this.editHandleInputChange}
+                                    type="number" />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row className={"email"}>
+                            <Label sm={4}>Teminat bilginizi giriniz </Label>
+                            <Col sm={8}>
+                                <Input
+                                    placeholder={"Varsa Teminat miktarını giriniz."}
+                                    className={'guarantee'}
+                                    autoComplete="off"
+                                    autoFocus
+                                    id="guarantee"
+                                    name="guarantee"
+                                    value={this.state.guarantee}
+                                    onChange={this.editHandleInputChange}
+                                    type="number" />
+                            </Col>
+                        </FormGroup>
                         <div className="text-center">
-                            <Button onClick={this.updateUser}>Değişiklikleri Kaydet
+                            <Button onClick={this.saveApply}>Başvuru Yap
                             </Button>
                         </div>
                     </Form>
                 </div>
+                {this.state.modalFlag &&
+                <InformModal content={this.state.content}
+                             limit={this.state.limit}
+                             toggleModal={(flag) => this.setState({modalFlag: flag})}
+                             modal={this.state.modalFlag}
+                />
+                }
             </>
         );
     }
 }
 
-export default UserProfilePage;
+export default ApplyCreditPage;

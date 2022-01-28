@@ -1,8 +1,8 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.creditmanager.service;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.dto.ApplicationDto;
-import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.dto.ApplicationSaveEntityDto;
-import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.service.CreditAppService;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapply.dto.ApplyDto;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapply.dto.ApplySaveEntityDto;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapply.service.CreditAppService;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.EvaluationMapper;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.dto.EvaluationDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.entity.EvaluateReport;
@@ -15,7 +15,6 @@ import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,22 +30,22 @@ public class ManagerService {
     private final UserService userService;
 
     @Transactional
-    public EvaluationResult management(ApplicationSaveEntityDto saveEntityDto) {
+    public EvaluationResult applyCredit(ApplySaveEntityDto saveEntityDto) {
 
-            ApplicationDto applicationDto = creditAppService.createCreditApp(saveEntityDto);
+            ApplyDto applyDto = creditAppService.createCreditApp(saveEntityDto);
             Integer creditScore = creditScoreService.findByUserId(saveEntityDto.getUserId());
 
-            EvaluationDto evaluationDto = EvaluationMapper.INSTANCE.convertApplicationDtoEvaluationDto(applicationDto);
+            EvaluationDto evaluationDto = EvaluationMapper.INSTANCE.convertApplicationDtoEvaluationDto(applyDto);
             evaluationDto.setScore(creditScore);
             EvaluationResult evaluationResult = evaluatorService.calculateCredit(evaluationDto);
             inform(saveEntityDto, evaluationResult);
             return evaluationResult;
     }
 
-    private void inform(ApplicationSaveEntityDto saveEntityDto, EvaluationResult evaluationResult) {
+    private void inform(ApplySaveEntityDto saveEntityDto, EvaluationResult evaluationResult) {
         try {
             User user = userService.findById(saveEntityDto.getUserId());
-            informService.information(new InformDto(user.getTelephone(), user.getEmail(), evaluationResult.getLimit(), evaluationResult.getEvaluateStatus()));
+            informService.notify(new InformDto(user.getTelephone(), user.getEmail(), evaluationResult.getLimit(), evaluationResult.getEvaluateStatus()));
         } catch (Exception e) {
             log.error("Kredi sonucu bildirimi yapılamadı: {}", e.getMessage());
         }

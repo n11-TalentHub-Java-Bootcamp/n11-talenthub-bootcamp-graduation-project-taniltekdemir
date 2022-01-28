@@ -1,6 +1,6 @@
-package com.taniltekdemir.n11.bootcampgraduationproject.gen.service;
+package com.taniltekdemir.n11.bootcampgraduationproject.common.service;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.gen.entity.BaseEntity;
+import com.taniltekdemir.n11.bootcampgraduationproject.common.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;

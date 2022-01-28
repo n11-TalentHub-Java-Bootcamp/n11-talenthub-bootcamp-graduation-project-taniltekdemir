@@ -1,6 +1,6 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.user.entity;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.gen.entity.BaseEntity;
+import com.taniltekdemir.n11.bootcampgraduationproject.common.entity.BaseEntity;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.enums.EnumUserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;

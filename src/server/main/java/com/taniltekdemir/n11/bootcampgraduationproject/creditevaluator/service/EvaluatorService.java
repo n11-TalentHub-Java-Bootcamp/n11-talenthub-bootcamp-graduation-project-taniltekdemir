@@ -32,7 +32,7 @@ public class EvaluatorService {
         return evaluationResult;
 
     }
-
+// TODO: mapper a taşı
     private void saveEvaluateReport(EvaluationDto evaluationDto, EvaluationResult evaluationResult) {
         EvaluationSaveEntityDto saveEntityDto = new EvaluationSaveEntityDto();
         saveEntityDto.setScoreOfCredit(evaluationDto.getScore());

@@ -1,8 +1,8 @@
-package com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.entity;
+package com.taniltekdemir.n11.bootcampgraduationproject.creditapply.entity;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.enums.EnumApplicationStatus;
-import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.enums.EnumApplicationValidity;
-import com.taniltekdemir.n11.bootcampgraduationproject.gen.entity.BaseEntity;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapply.enums.EnumApplyStatus;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapply.enums.EnumApplyValidity;
+import com.taniltekdemir.n11.bootcampgraduationproject.common.entity.BaseEntity;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
 import lombok.Data;
 
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "CREDIT_APPLICATION")
 @Data
-public class CreditApplication implements BaseEntity {
+public class CreditApply implements BaseEntity {
 
     @Id
     @SequenceGenerator(name = "CreditApplication", sequenceName = "CREDIT_APPLICATION_ID_SEQ")
@@ -32,11 +32,11 @@ public class CreditApplication implements BaseEntity {
 
     @Column(name = "validity_of_applicaton")
     @Enumerated(EnumType.STRING)
-    private EnumApplicationValidity applicationValidity;
+    private EnumApplyValidity applicationValidity;
 
     @Column(name = "status_of_applicaton")
     @Enumerated(EnumType.STRING)
-    private EnumApplicationStatus applicationStatus;
+    private EnumApplyStatus applicationStatus;
 
     @Transient
     @Column(name = "credit_score")

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Container, Form, FormControl, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 
 
 /**
@@ -31,13 +31,11 @@ class Topbar extends Component {
                                 {!this.props.isLoggedOn && <Nav.Link href="/">Anasayfa</Nav.Link>}
                                 {this.props.isLoggedOn && <Nav.Link href="/apply">Kredi Başvursu Yap</Nav.Link>}
                                 {!this.props.isLoggedOn && <Nav.Link href="/register">Kayıt Ol</Nav.Link>}
+                                {!this.props.isLoggedOn && <Nav.Link href="/applyWithoutRegistered">Kredi Başvurusun Yap</Nav.Link>}
                                 <Nav.Link href="/interrogate">Başvuru Sonucu Öğren</Nav.Link>
-                                <NavDropdown title="İşlemler" id="basic-nav-dropdown">
-                                    <NavDropdown.Item href="/info">Kredi Oranları</NavDropdown.Item>
-                                    <NavDropdown.Item href="/info">Kredi Başvuru Şartları</NavDropdown.Item>
+                                <NavDropdown title="Kullancı İşlemleri" id="basic-nav-dropdown">
                                     {this.props.isLoggedOn && <NavDropdown.Item href="/profile">Kullanıcı Bilgileri</NavDropdown.Item>}
-
-                                    <NavDropdown.Divider/>
+                                    {this.props.isLoggedOn && <NavDropdown.Divider/>}
                                     {!this.props.isLoggedOn &&
                                     < NavDropdown.Item href="/login">Giriş</NavDropdown.Item>}
                                     {this.props.isLoggedOn &&

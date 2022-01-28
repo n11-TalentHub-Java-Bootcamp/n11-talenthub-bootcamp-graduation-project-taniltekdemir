@@ -1,6 +1,6 @@
-package com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.enums;
+package com.taniltekdemir.n11.bootcampgraduationproject.creditapply.enums;
 
-public enum EnumApplicationValidity {
+public enum EnumApplyValidity {
 
     ACTIVE("ACTIVE"),
     PASSIVE("PASSIVE")
@@ -8,7 +8,7 @@ public enum EnumApplicationValidity {
 
     private String type;
 
-    EnumApplicationValidity(String type) {
+    EnumApplyValidity(String type) {
         this.type = type;
     }
 

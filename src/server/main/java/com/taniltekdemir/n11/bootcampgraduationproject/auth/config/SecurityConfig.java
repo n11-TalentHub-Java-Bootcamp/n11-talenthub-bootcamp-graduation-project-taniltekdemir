@@ -93,6 +93,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/auth/**",
                         "/managers/interrogate",
+                        "/managers/applyCreditWithoutRegistered",
                         "/swagger-ui.html",
                         "/swagger-ui/**",
                         "/v3/api-docs/**"

@@ -2,9 +2,15 @@ package com.taniltekdemir.n11.bootcampgraduationproject.auth.controller;
 
 import com.taniltekdemir.n11.bootcampgraduationproject.auth.dto.LoginRequestDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.auth.service.AuthenticationService;
+import com.taniltekdemir.n11.bootcampgraduationproject.common.exception.CommonException;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapply.dto.ApplyExtendedSaveEntityDto;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapply.dto.ApplySaveEntityDto;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.substrategy.payload.EvaluationResult;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditmanager.mapper.ManageMapper;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditmanager.service.ManagerService;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
+import com.taniltekdemir.n11.bootcampgraduationproject.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +27,7 @@ public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
     private final ManagerService managerService;
+    private final UserService userService;
 
     @PostMapping("/login")
     public Map<String, String> login(@RequestBody LoginRequestDto loginRequestDto){
@@ -38,6 +45,5 @@ public class AuthenticationController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
 }
 

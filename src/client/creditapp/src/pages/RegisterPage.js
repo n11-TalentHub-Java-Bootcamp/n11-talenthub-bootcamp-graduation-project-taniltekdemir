@@ -113,6 +113,8 @@ class RegisterPage extends Component {
                                     autoFocus
                                     id="tckn"
                                     name="tckn"
+                                    minLength={11}
+                                    maxLength={11}
                                     value={this.state.tckn}
                                     onChange={this.editHandleInputChange}
                                     type="text" />
@@ -153,6 +155,8 @@ class RegisterPage extends Component {
                                     autoFocus
                                     id="phone"
                                     name="phone"
+                                    minLength={10}
+                                    maxLength={10}
                                     value={this.state.phone}
                                     onChange={this.editHandleInputChange}
                                     type="text" />

@@ -17,7 +17,7 @@ public class InformService {
     private final MailService mailService;
     private final SmsService smsService;
 
-    public void information(InformDto informDto) {
+    public void notify(InformDto informDto) {
         if (informDto.getEmail() != null && informDto.getEmail() != "") {
             mailService.sendEmailMessage(informDto);
         }

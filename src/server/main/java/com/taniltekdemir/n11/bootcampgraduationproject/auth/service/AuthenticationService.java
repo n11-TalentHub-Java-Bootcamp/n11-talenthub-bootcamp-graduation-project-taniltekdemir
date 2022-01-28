@@ -42,7 +42,7 @@ public class AuthenticationService {
 
         String token = jwtTokenGenerator.generateJwtToken(authentication);
 
-        User user = userEntityService.findByTckn(loginRequestDto.getUsername());
+        User user = userEntityService.findByTckn(loginRequestDto.getUsername());//burada repoya atılan sorguda dönen veri zaten sadece id olacak şekilde ayarlanabilir
         Long userId = user.getId();
 
         Map<String, String> response = new HashMap<>();

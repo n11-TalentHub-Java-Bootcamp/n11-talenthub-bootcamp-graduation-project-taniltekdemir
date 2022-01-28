@@ -1,6 +1,6 @@
-package com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.enums;
+package com.taniltekdemir.n11.bootcampgraduationproject.creditapply.enums;
 
-public enum EnumApplicationStatus {
+public enum EnumApplyStatus {
 
     WAITING("WAITING"),
     EVALUATED("EVALUATED")
@@ -8,7 +8,7 @@ public enum EnumApplicationStatus {
 
     private String type;
 
-    EnumApplicationStatus(String type) {
+    EnumApplyStatus(String type) {
         this.type = type;
     }
 

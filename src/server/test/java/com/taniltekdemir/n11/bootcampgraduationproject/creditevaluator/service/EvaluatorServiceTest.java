@@ -1,7 +1,6 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.service;
 
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.dto.EvaluationDto;
-import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.entity.EvaluateReport;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.repository.EvaluatorRepository;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.service.entityService.EvaluatorEntityService;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.substrategy.payload.EvaluationResult;
@@ -9,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 class EvaluatorServiceTest {

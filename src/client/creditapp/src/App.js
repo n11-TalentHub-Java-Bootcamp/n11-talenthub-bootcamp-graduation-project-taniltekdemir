@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import {Redirect, Route, Routes, Switch} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 import MainPage from "./pages/MainPage";
 import Topbar from "./components/Topbar";
 import LoginPage from "./pages/LoginPage";
@@ -9,6 +9,7 @@ import RegisterPage from "./pages/RegisterPage";
 import InterrogatePage from "./pages/InterrogatePage";
 import ApplicationPage from "./pages/ApplicationPage";
 import UserProfilePage from "./pages/UserProfilePage";
+import ApplyCreditPage from "./pages/ApplyCreditPage";
 
 class App extends React.Component{
     constructor(props) {
@@ -49,6 +50,7 @@ class App extends React.Component{
                     <Route exact path="/info"               render={(props) => <InfoPage  {...props}/>}/>
                     <Route exact path="/apply"              render={(props) => <ApplicationPage  {...props}/>}/>
                     <Route exact path="/profile"              render={(props) => <UserProfilePage  {...props}/>}/>
+                    <Route exact path="/applyWithoutRegistered"              render={(props) => <ApplyCreditPage  {...props}/>}/>
                     <Redirect to="/"/>
                 </Switch>
 

@@ -1,8 +1,8 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.entity;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.creditapplication.entity.CreditApplication;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditapply.entity.CreditApply;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.enums.EnumEvaluateStatus;
-import com.taniltekdemir.n11.bootcampgraduationproject.gen.entity.BaseEntity;
+import com.taniltekdemir.n11.bootcampgraduationproject.common.entity.BaseEntity;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
 import lombok.Data;
 
@@ -25,7 +25,7 @@ public class EvaluateReport implements BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "application_id", foreignKey = @ForeignKey(name = "FK_CREDIT_APPLICATION_EVALUATE_REPORT_ID"))
-    private CreditApplication application;
+    private CreditApply application;
 
     @Column(name ="limt_of_credit")
     private BigDecimal limitOfCredit;
