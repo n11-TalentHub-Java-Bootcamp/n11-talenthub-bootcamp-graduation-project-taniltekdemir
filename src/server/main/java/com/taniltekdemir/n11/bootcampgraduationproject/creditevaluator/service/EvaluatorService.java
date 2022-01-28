@@ -32,15 +32,9 @@ public class EvaluatorService {
         return evaluationResult;
 
     }
-// TODO: mapper a taşı
-    private void saveEvaluateReport(EvaluationDto evaluationDto, EvaluationResult evaluationResult) {
-        EvaluationSaveEntityDto saveEntityDto = new EvaluationSaveEntityDto();
-        saveEntityDto.setScoreOfCredit(evaluationDto.getScore());
-        saveEntityDto.setApplicationId(evaluationDto.getApplicationId());
-        saveEntityDto.setUserId(evaluationDto.getUserId());
-        saveEntityDto.setLimitOfCredit(evaluationResult.getLimit());
-        saveEntityDto.setEvaluateStatus(evaluationResult.getEvaluateStatus());
 
+    private void saveEvaluateReport(EvaluationDto evaluationDto, EvaluationResult evaluationResult) {
+        EvaluationSaveEntityDto saveEntityDto = EvaluationMapper.INSTANCE.convertToEvaluationSaveEntityDto(evaluationDto, evaluationResult);
         EvaluateReport report = EvaluationMapper.INSTANCE.convertEvaluationSaveEntityDtoToEvaluateReport(saveEntityDto);
         evaluatorEntityService.save(report);
     }

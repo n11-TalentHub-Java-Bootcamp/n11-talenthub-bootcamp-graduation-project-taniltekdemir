@@ -33,8 +33,6 @@ ssrc/server/test/java/com/taniltekdemir/n11/bootcampgraduationproject/BootcampGr
 nsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/BootcampGraduationProjectApplication.java,d/8/d8168222f229be42fbf9cda342ad5ac5effb7cc9
 Ÿ
 osrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/security/JwtAuthenticationFilter.java,2/5/25bb18da226493cb19b63e4f80117ed3426b60dd
-¥
-usrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/dto/EvaluationSaveEntityDto.java,4/4/44ad0f8f524909d3a04ba7487cfc04932449dc2e
 £
 ssrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/security/JwtAuthenticationEntryPoint.java,f/2/f2f7f78b921a356467d3bfcb1c2e4ac8ea59f3e3
 —
@@ -113,8 +111,6 @@ psrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/common/exc
 asrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/common/helper/TcknUtils.java,3/f/3f52a21a1e7586d98521b8ec44002410b83f021a
 ¨
 xsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/repository/EvaluatorRepository.java,e/f/ef6b1d6dfe495d642506e39977207e95d9f8d65f
-›
-ksrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/dto/EvaluationDto.java,8/5/8551f91211a8a01279aaa2ff0b717d2f81d9a527
 £
 ssrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/strategy/Below500Strategy.java,d/7/d7076a119aabcfd8fbaa9073d8dd0a19cbf61b1b
 ¬

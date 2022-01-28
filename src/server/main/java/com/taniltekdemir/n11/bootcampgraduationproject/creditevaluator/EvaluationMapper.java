@@ -4,6 +4,7 @@ import com.taniltekdemir.n11.bootcampgraduationproject.creditapply.dto.ApplyDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.dto.EvaluationDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.dto.EvaluationSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.entity.EvaluateReport;
+import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.strategy.substrategy.payload.EvaluationResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -25,5 +26,14 @@ public interface EvaluationMapper {
             @Mapping(target = "application.id", source ="applicationId")
     })
     EvaluateReport convertEvaluationSaveEntityDtoToEvaluateReport(EvaluationSaveEntityDto saveEntityDto);
+
+    @Mappings({
+            @Mapping(target = "scoreOfCredit", source = "evaluationDto.score"),
+            @Mapping(target = "applicationId", source = "evaluationDto.applicationId"),
+            @Mapping(target = "userId", source = "evaluationDto.userId"),
+            @Mapping(target = "limitOfCredit", source = "evaluationResult.limit"),
+            @Mapping(target = "evaluateStatus", source = "evaluationResult.evaluateStatus"),
+    })
+    EvaluationSaveEntityDto convertToEvaluationSaveEntityDto(EvaluationDto evaluationDto, EvaluationResult evaluationResult);
 
 }
