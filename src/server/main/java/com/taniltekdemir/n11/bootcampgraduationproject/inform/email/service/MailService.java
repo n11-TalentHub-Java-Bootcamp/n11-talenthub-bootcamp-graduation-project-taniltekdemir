@@ -1,6 +1,5 @@
 package com.taniltekdemir.n11.bootcampgraduationproject.inform.email.service;
 
-import com.taniltekdemir.n11.bootcampgraduationproject.common.exception.CommonException;
 import com.taniltekdemir.n11.bootcampgraduationproject.creditevaluator.enums.EnumEvaluateStatus;
 import com.taniltekdemir.n11.bootcampgraduationproject.inform.dto.InformDto;
 import lombok.RequiredArgsConstructor;

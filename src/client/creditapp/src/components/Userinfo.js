@@ -19,7 +19,7 @@ class Userinfo extends Component {
             <>
                 <tr>
                     <td>
-                        {this.props.info.id}
+                        {this.props.index}
                     </td>
                     <td>
                         {this.props.info.name}

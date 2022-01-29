@@ -9,7 +9,7 @@ import Userinfo from "../components/Userinfo";
  * @author: Anil Tekdemir
  */
 
-class AllUserPage extends Component {
+class AllCreditPage extends Component {
 
     constructor(props) {
         super(props);
@@ -87,4 +87,4 @@ class AllUserPage extends Component {
     }
 }
 
-export default AllUserPage;
+export default AllCreditPage;

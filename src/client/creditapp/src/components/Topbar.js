@@ -31,7 +31,8 @@ class Topbar extends Component {
                             <Nav className="me-auto">
                                 {!this.props.isLoggedOn && <Nav.Link href="/">Anasayfa</Nav.Link>}
                                 {this.props.isLoggedOn && userType != "ADMIN" &&<Nav.Link href="/apply">Kredi Başvursu Yap</Nav.Link>}
-                                {this.props.isLoggedOn && userType == "ADMIN" &&<Nav.Link href="/allUser">Müşterileri Görüntüle</Nav.Link>}
+                                {this.props.isLoggedOn && userType == "ADMIN" &&<Nav.Link href="/userInfos">Müşteri Bilgileri</Nav.Link>}
+                                {this.props.isLoggedOn && userType == "ADMIN" &&<Nav.Link href="/allUser">Kredi Başvuruları</Nav.Link>}
                                 {!this.props.isLoggedOn && <Nav.Link href="/register">Kayıt Ol</Nav.Link>}
                                 {!this.props.isLoggedOn && <Nav.Link href="/applyWithoutRegistered">Kredi Başvurusun Yap</Nav.Link>}
                                 <Nav.Link href="/interrogate">Başvuru Sonucu Öğren</Nav.Link>
