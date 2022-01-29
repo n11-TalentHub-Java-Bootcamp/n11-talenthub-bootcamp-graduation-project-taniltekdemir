@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "CREDIT_APPLICATION")
+@Table(name = "credit_application")
 @Data
 public class CreditApply implements BaseEntity {
 

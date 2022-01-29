@@ -2,6 +2,7 @@ package com.taniltekdemir.n11.bootcampgraduationproject.user.controller;
 
 import com.taniltekdemir.n11.bootcampgraduationproject.common.exception.CommonException;
 import com.taniltekdemir.n11.bootcampgraduationproject.common.helper.TcknUtils;
+import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.InfoDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
@@ -73,6 +74,14 @@ public class UserController {
             log.error("Kullanıcı bulunamadı");
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @GetMapping("/allInfo")
+    public ResponseEntity<?> getAllInfo() {
+
+        List<InfoDto> infoDtos = userService.findAllInfo();
+
+        return ResponseEntity.ok(infoDtos);
     }
 
 }

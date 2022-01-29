@@ -23,7 +23,8 @@ class RegisterPage extends Component {
             dateOfBirth: "",
             phone: "",
             email: "",
-            password: ""
+            password: "",
+            userType: "CUSTOMER"
         }
     }
 
@@ -43,7 +44,8 @@ class RegisterPage extends Component {
             dateOfBirth: this.state.dateOfBirth,
             telephone: this.state.phone,
             password: this.state.password,
-            email: this.state.email
+            email: this.state.email,
+            userType: this.state.userType
         }
         let params = {
             url: `auth/register`,

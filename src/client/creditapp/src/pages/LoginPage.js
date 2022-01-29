@@ -36,6 +36,7 @@ class LoginPage extends Component {
                 sessionStorage.setItem('token', response.data.token);
                 sessionStorage.setItem('currentUserId', response.data.currentUserId);
                 sessionStorage.setItem('currentUserName', response.data.currentUserName);
+                sessionStorage.setItem('userType', response.data.userType);
                 self.props.login();
                 self.props.history.push("/");
             }).catch(function (error) {

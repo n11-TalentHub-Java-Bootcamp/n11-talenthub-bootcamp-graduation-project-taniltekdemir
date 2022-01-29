@@ -10,6 +10,7 @@ import InterrogatePage from "./pages/InterrogatePage";
 import ApplicationPage from "./pages/ApplicationPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import ApplyCreditPage from "./pages/ApplyCreditPage";
+import AllUserPage from "./pages/AllUserPage";
 
 class App extends React.Component{
     constructor(props) {
@@ -51,6 +52,7 @@ class App extends React.Component{
                     <Route exact path="/apply"              render={(props) => <ApplicationPage  {...props}/>}/>
                     <Route exact path="/profile"              render={(props) => <UserProfilePage  {...props}/>}/>
                     <Route exact path="/applyWithoutRegistered"              render={(props) => <ApplyCreditPage  {...props}/>}/>
+                    <Route exact path="/allUser"              render={(props) => <AllUserPage  {...props}/>}/>
                     <Redirect to="/"/>
                 </Switch>
 

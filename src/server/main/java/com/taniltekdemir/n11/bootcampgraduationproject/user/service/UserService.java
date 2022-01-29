@@ -2,6 +2,7 @@ package com.taniltekdemir.n11.bootcampgraduationproject.user.service;
 
 import com.taniltekdemir.n11.bootcampgraduationproject.common.exception.CommonException;
 import com.taniltekdemir.n11.bootcampgraduationproject.common.helper.TcknUtils;
+import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.InfoDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
@@ -114,5 +115,9 @@ public class UserService {
             throw new RuntimeException("Hatalı bilgilerler kredi sorgusu yaptınız.");
         }
         return user.getId();
+    }
+
+    public List<InfoDto> findAllInfo() {
+        return userRepository.getAllByInfo();
     }
 }

@@ -23,14 +23,10 @@ psrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditscor
 rsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditscore/dto/CreditScoreSaveEntityDto.java,a/0/a04c77aa65c64f218b038f55dd982a36ecd53150
 ¤
 tsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/strategy/Above1000Strategy.java,9/5/95515e4b19137d3f93c265e8d5da1256d26c38fb
-˜
-hsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/repository/UserRepository.java,a/5/a5304f827ed8c6a6926ba4bf4141c18bb6873447
 ž
 nsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditscore/mapper/CreditScoreMapper.java,6/f/6ff3d7ab00dc65213a07b44ff849faf544d770d9
 £
 ssrc/server/test/java/com/taniltekdemir/n11/bootcampgraduationproject/BootcampGraduationProjectApplicationTests.java,c/9/c958da350ba64753ad6353cc8b95a3a0c4621869
-ž
-nsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/BootcampGraduationProjectApplication.java,d/8/d8168222f229be42fbf9cda342ad5ac5effb7cc9
 Ÿ
 osrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/security/JwtAuthenticationFilter.java,2/5/25bb18da226493cb19b63e4f80117ed3426b60dd
 £
@@ -57,8 +53,6 @@ T
 $src/client/creditapp/src/App.test.js,5/b/5befc0e3d581ab2c470c7da127692979ff863232
 P
  src/client/creditapp/src/App.css,6/d/6d53d39f920ce1d07097d3d931e749fe81559ddf
-Z
-*src/client/creditapp/src/pages/MainPage.js,6/e/6e66d57d71859ad9bc7547a7123bd904d64216a1
 R
 "src/client/creditapp/src/index.css,f/c/fc4ef8a930f784a349d88ab77925cfa3b8f9b5b4
 V
@@ -79,8 +73,6 @@ V
 &src/client/creditapp/package-lock.json,6/c/6cfd12b832f183e3da91156973c326dc3115db75
 Š
 Zsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/dto/UserDto.java,2/9/29deb621f8b6ea47015aeb467acb4e87b9dc0107
-˜
-hsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/controller/UserController.java,6/f/6f91de3ba7963a2daf0f535ab73a2e252cfecf8b
  
 psrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/inform/email/controller/MailController.java,5/a/5a4fb18d0c64d3f712143429cb14f30785f1af6a
 Ž
@@ -95,10 +87,6 @@ fsrc/server/test/java/com/taniltekdemir/n11/bootcampgraduationproject/user/servi
 `src/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/mapper/UserMapper.java,d/d/dd2dbac4bb56e7f42443e3841539513ebf6f918a
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
-’
-bsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/service/UserService.java,e/a/eaaf4493e8a92caf66e562029810fab92e6a45c1
-”
-dsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/dto/UserSaveEntityDto.java,9/5/95a5a57916927036a97d7438a8adddf25d003d63
 ‘
 asrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/dto/InterrogateDto.java,4/5/45baf7b9b8b31539f0c0c95139bbf6bfed640b00
 ’
@@ -109,8 +97,6 @@ lsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/common/exc
 psrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/common/exception/UserNotFoundException.java,8/e/8e99497042bd57506d3fd638d5d61b3b6573514e
 ‘
 asrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/common/helper/TcknUtils.java,3/f/3f52a21a1e7586d98521b8ec44002410b83f021a
-¨
-xsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/repository/EvaluatorRepository.java,e/f/ef6b1d6dfe495d642506e39977207e95d9f8d65f
 £
 ssrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/strategy/Below500Strategy.java,d/7/d7076a119aabcfd8fbaa9073d8dd0a19cbf61b1b
 ¬

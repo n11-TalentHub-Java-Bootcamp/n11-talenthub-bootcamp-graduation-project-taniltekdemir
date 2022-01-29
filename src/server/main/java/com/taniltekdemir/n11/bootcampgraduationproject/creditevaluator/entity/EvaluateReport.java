@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name= "EVALUATE_REPORT")
+@Table(name= "evaluate_report")
 @Data
 public class EvaluateReport implements BaseEntity {
 

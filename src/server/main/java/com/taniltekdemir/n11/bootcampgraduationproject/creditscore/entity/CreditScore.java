@@ -7,7 +7,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CREDIT_SCORE")
+@Table(name = "credit_score")
 @Data
 public class CreditScore implements BaseEntity {
 

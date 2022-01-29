@@ -6,6 +6,7 @@ import com.taniltekdemir.n11.bootcampgraduationproject.auth.security.JwtTokenGen
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
+import com.taniltekdemir.n11.bootcampgraduationproject.user.enums.EnumUserType;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.UserService;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.entityService.UserEntityService;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +50,7 @@ public class AuthenticationService {
         response.put("token", EnumJwtConstant.BEARER.getConstant() + token);
         response.put("currentUserId", userId.toString());
         response.put("currentUserName", user.getName());
+        response.put("userType", user.getUserType() == EnumUserType.ADMIN ? "ADMIN": "CUSTOMER");
         log.info("{} tckn li kullanıcı giriş yaptı", user.getTckn());
         return response;
     }
