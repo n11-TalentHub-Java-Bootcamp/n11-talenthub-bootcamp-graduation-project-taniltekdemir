@@ -1,4 +1,4 @@
-#Project Description
+# Project Description
 Loan Application System
 - can receive a loan application from the user, 
 - can calculate the application with various algorithms,
