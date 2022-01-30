@@ -67,7 +67,7 @@ Validation of data types and control of mandatory fields were performed on both 
 Lombok Slf4j was used for logging processors. Every important operation such as saving, updating, deleting, sending notification was logged.
 
 ### Documentation
-Swagger was used for documentation. All endpoints are accessible. You can also be autorized in swagger by getting tokens after the login process. here is the link to the documentation file. [link]
+Swagger was used for documentation. All endpoints are accessible. You can also be autorized in swagger by getting tokens after the login process. here is the link to the documentation file. [Api-docs.json](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/src/server/main/resources/Api-docs.json)
 
 ### Exception Handling
 Exception handling operations are customized. Created ExceptionResponse so that errors are in standard format. You can find these operations in "common/exception/" 
