@@ -14,7 +14,7 @@ public class Above10000SubStrategy implements SubStrategy {
         EvaluationResult evaluationResult = new EvaluationResult();
         evaluationResult.setEvaluateStatus(EnumEvaluateStatus.ACCEPTED);
         BigDecimal limit;
-        BigDecimal addLimit = BigDecimal.ZERO;
+        BigDecimal addLimit;
         if (guarantee != null) {
             addLimit = guarantee.divide(BigDecimal.valueOf(4));
             limit = salary.multiply(BigDecimal.valueOf(multiplier)).divide(BigDecimal.valueOf(2)).add(addLimit);;

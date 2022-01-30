@@ -13,7 +13,7 @@ public class Above1000Strategy implements Strategy{
         EvaluationResult evaluationResult = new EvaluationResult();
         evaluationResult.setEvaluateStatus(EnumEvaluateStatus.ACCEPTED);
         BigDecimal limit;
-        BigDecimal addLimit = BigDecimal.ZERO;
+        BigDecimal addLimit;
         if (guarantee != null) {
             addLimit = guarantee.divide(BigDecimal.valueOf(2));
             limit = salary.multiply(BigDecimal.valueOf(multiplier)).add(addLimit);;

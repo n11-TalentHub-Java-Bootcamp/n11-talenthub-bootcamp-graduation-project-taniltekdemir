@@ -11,7 +11,7 @@ public class Below5000SubStrategy implements SubStrategy {
         EvaluationResult evaluationResult = new EvaluationResult();
         evaluationResult.setEvaluateStatus(EnumEvaluateStatus.ACCEPTED);
         BigDecimal limit;
-        BigDecimal addLimit = BigDecimal.ZERO;
+        BigDecimal addLimit;
         if (guarantee != null) {
             addLimit = guarantee.divide(BigDecimal.valueOf(10));
             limit = BigDecimal.valueOf(10000).add(addLimit);
