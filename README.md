@@ -7,6 +7,7 @@ Loan Application System
 - can send result by pop up sms and email, 
 - Java language and Spring boot Framework are used on the backend,
 - Frontend side is developed with ReactJS library.
+- I prepared a video to introduce the project. You can access it from this [link](https://www.youtube.com/watch?v=6VBDXmBEQAo).
 
 ## Built With
 - Java
