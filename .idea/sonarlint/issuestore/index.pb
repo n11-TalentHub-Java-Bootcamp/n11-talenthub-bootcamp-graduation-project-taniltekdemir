@@ -1,6 +1,4 @@
 
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 U
 %.mvn/wrapper/maven-wrapper.properties,3/2/32e074f71d16c1e88ac02aa83592ca6ad1fd98a8
 õ
@@ -59,8 +57,6 @@ V
 &src/client/creditapp/src/setupTests.js,8/2/8224dada905070f29a16ca50150fdea78e919e0f
 Q
 !src/client/creditapp/src/logo.svg,2/7/274dcc32e5d1cd822f65332ae10f1ee2c380da2a
-N
-src/client/creditapp/README.md,c/f/cf26f44177b7348cd3e0933098b7e95eeec18bab
 O
 src/client/creditapp/.gitignore,3/4/34ef0c3ebc47b0585307672c4477415ffca96554
 û
@@ -85,8 +81,6 @@ fsrc/server/test/java/com/taniltekdemir/n11/bootcampgraduationproject/user/servi
 asrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/dto/InterrogateDto.java,4/5/45baf7b9b8b31539f0c0c95139bbf6bfed640b00
 í
 bsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/dto/LoginRequestDto.java,0/a/0afaf7b54a42a080eea2f288fb833a0c391e83f8
-ú
-lsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/common/exception/ExceptionResponse.java,8/0/806e0db30bc2b6f9607fa1feeb988a695d13db25
 †
 psrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/common/exception/UserNotFoundException.java,8/e/8e99497042bd57506d3fd638d5d61b3b6573514e
 ë
@@ -107,8 +101,6 @@ a
 1src/client/creditapp/src/pages/ApplicationPage.js,f/1/f1671589ae1f2a6febff01a81437188d453b0c46
 è
 _src/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/inform/sms/SmsService.java,7/5/7594982846f27df5bd310b40fc856e85f46e02dc
-b
-2src/client/creditapp/src/components/InformModal.js,3/9/3948747f804336d620a3fc80c900dfa099f657ff
 í
 bsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditapply/dto/ApplyDto.java,6/e/6e4b3141f1503afaada1d46f5e03405305e7ef9d
 ù
@@ -155,8 +147,6 @@ tsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditappl
 ksrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/dto/EvaluationDto.java,8/5/8551f91211a8a01279aaa2ff0b717d2f81d9a527
 •
 usrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/dto/EvaluationSaveEntityDto.java,4/4/44ad0f8f524909d3a04ba7487cfc04932449dc2e
-•
-usrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/common/exception/CustomizedExceptionHandler.java,5/4/54e4861a65c1baf957f44a3bf4b74467cc3fb7ea
 ö
 jsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/EvaluationMapper.java,6/3/6388fbb433b284b5a59bbce9ac4ebc70725bfe23
 ∏
@@ -171,10 +161,6 @@ Z
 rsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/controller/AuthenticationController.java,e/6/e666c56d811168e100cd09724329a4fda5beca26
 î
 dsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/dto/UserSaveEntityDto.java,9/5/95a5a57916927036a97d7438a8adddf25d003d63
-a
-1src/client/creditapp/src/pages/InterrogatePage.js,8/6/86d624ffa70e44749f61e9f069adc015620b6ef8
-û
-nsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditmanager/service/ManagerService.java,7/5/75c81e5a2c5171ccc0cf31fbf3b94cb6deef3a95
 §
 tsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditmanager/controller/ManagerController.java,0/f/0f318919115ba8c1f532f576d6f2f2df1214accf
 ®
@@ -185,9 +171,5 @@ a
 +src/client/creditapp/src/pages/LoginPage.js,4/0/40a5b3c800ec6a2c1bfa788b1d5d8dfb545a3d17
 ú
 lsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/auth/service/AuthenticationService.java,2/7/273693a770289cf49e50584b2b849e83177fd0f5
-^
-.src/client/creditapp/src/pages/RegisterPage.js,6/f/6f4f3ce6a2c5768a776109194171ad8a67636d5b
 í
 bsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/user/service/UserService.java,e/a/eaaf4493e8a92caf66e562029810fab92e6a45c1
-¢
-rsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/service/EvaluatorService.java,8/7/874a4c787655b506c631c3477fe26498e6cc7ddf
