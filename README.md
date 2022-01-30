@@ -29,7 +29,7 @@ Loan Application System
 
 ## Some Highlights
 
-###Login Process
+### Login Process
 JWT Token is used in the project. You can login to the project by getting a token. There are pages and methods that you can use without getting tokens. I will add some infos for Public and other Pages.
 Endpoints you can use without getting tokens.
 
