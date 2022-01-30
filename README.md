@@ -86,15 +86,14 @@ Two user types, Admin and Customer, are defined. There are pages that only Admin
 - **Login Page** ![alt text](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/image/loginPage.png) : You can login to the system with the ID number and password information you used while registering to the system or applying for a loan.
 
 ## Admin-only pages
-- **CustomerList Page** ![alt text](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/image/customerListPage.png) : All customers are shown on this page as a table. You can delete a customer record. If the customer has a loan application, this record cannot be deleted.
-- **CreditList Page**: ![alt text](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/image/creditListPage.png) : Data in User, Credit Apply and Credit Evaluation tables are joined and displayed on this page.
+- **CustomerList Page** ![alt text](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/image/customerListPage.png) All customers are shown on this page as a table. You can delete a customer record. If the customer has a loan application, this record cannot be deleted.
+- **CreditList Page**: ![alt text](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/image/creditListPage.png) Data in User, Credit Apply and Credit Evaluation tables are joined and displayed on this page.
 
 ## Pages that can be used as login
-- **Credit Apply Page** ![alt text](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/image/creditApplywithLogin.png) : After logging in, you can apply for a loan by simply entering the salary and guarantee information.
-- **User Profile Page** ![alt text](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/image/userProfilePage.png) : The user can see the information registered in the system. Information other than ID number can be changed.
+- **Credit Apply Page** ![alt text](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/image/creditApplywithLogin.png) After logging in, you can apply for a loan by simply entering the salary and guarantee information.
+- **User Profile Page** ![alt text](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/image/userProfilePage.png) The user can see the information registered in the system. Information other than ID number can be changed.
 
 ## alertify 
 - Error messages are shown as pop ups with alertify.
-- 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
