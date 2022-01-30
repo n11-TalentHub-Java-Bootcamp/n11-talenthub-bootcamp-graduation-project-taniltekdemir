@@ -73,8 +73,6 @@ a
 1src/client/creditapp/src/pages/InterrogatePage.js,8/6/86d624ffa70e44749f61e9f069adc015620b6ef8
 b
 2src/client/creditapp/src/components/InformModal.js,3/9/3948747f804336d620a3fc80c900dfa099f657ff
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 ñ
 fsrc/server/test/java/com/taniltekdemir/n11/bootcampgraduationproject/user/service/UserServiceTest.java,d/2/d26a3ae672f9c7cc1768d44e2a838bdf71012625
 ä
@@ -219,3 +217,7 @@ tsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/crediteval
 çsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/strategy/substrategy/Between5000And10000SubStrategy.java,d/6/d6c98a81dfe7c65bd27b9e4becf02b2189007e61
 µ
 Ñsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/creditevaluator/strategy/substrategy/Above10000SubStrategy.java,b/6/b64526d9ae2b90d1133ccd4a91172198c7d721a9
+û
+nsrc/server/main/java/com/taniltekdemir/n11/bootcampgraduationproject/BootcampGraduationProjectApplication.java,d/8/d8168222f229be42fbf9cda342ad5ac5effb7cc9
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec

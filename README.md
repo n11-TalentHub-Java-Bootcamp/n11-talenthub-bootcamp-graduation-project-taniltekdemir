@@ -25,7 +25,10 @@ Loan Application System
 3. In PostgreSql, you need to add a database with the name credit_system
 4. You can send requests using the clientside project and see the endpoints in the Swagger document [Api-docs.json](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir/blob/main/src/server/main/resources/Api-docs.json)
 5. The project is running on the 8080 port by default. You can access the project run on the client side from http://localhost:3000/
-
+6. I have prepared a DockerFile so you can easily test the project. It will be enough to configure the ip in the application.properties file.
+* you can use the following commands: 
+- docker build . -t app:1.0
+- docker run --name app -d -p 8080:8080 app:1.0
 
 ## Some Highlights
 
