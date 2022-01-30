@@ -11,6 +11,8 @@ import com.taniltekdemir.n11.bootcampgraduationproject.creditmanager.service.Man
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@Tag(name = "Authentication Controller", description = "Here we can login to get authorization, we can register user")
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
@@ -30,12 +33,14 @@ public class AuthenticationController {
     private final UserService userService;
 
     @PostMapping("/login")
+    @Operation(summary = "You can add the token you receive as a login result to the authorize section without a bearer.")
     public Map<String, String> login(@RequestBody LoginRequestDto loginRequestDto){
 
         return authenticationService.login(loginRequestDto);
     }
 
     @PostMapping("/register")
+    @Operation(summary = "You can register a user. You can use the password you set to login - authorization is not required")
     public ResponseEntity<?> register(@Valid @RequestBody UserSaveEntityDto userSaveEntityDto){
         try {
             UserDto userDto = authenticationService.registerCustomer(userSaveEntityDto);

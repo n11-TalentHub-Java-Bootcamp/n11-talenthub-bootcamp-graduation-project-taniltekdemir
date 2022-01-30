@@ -13,6 +13,8 @@ import com.taniltekdemir.n11.bootcampgraduationproject.creditmanager.service.Man
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,7 @@ import javax.validation.Valid;
 @RequestMapping("/managers")
 @CrossOrigin
 @RequiredArgsConstructor
+@Tag(name = "Manager Controller", description = "Here you can apply for a loan with Login and without registration. You can query the credit result")
 public class ManagerController {
 
     private final CreditAppService creditAppService;
@@ -32,6 +35,7 @@ public class ManagerController {
     private final UserService userService;
 
     @PostMapping("/applyCredit")
+    @Operation(summary = "Applying for a loan. Requires only salary and optional guarantee information - authorization is required")
     public ResponseEntity<?> applyCredit(@Valid @RequestBody ApplySaveEntityDto saveEntityDto) {
         try {
             creditAppService.validationForApplication(saveEntityDto);
@@ -47,6 +51,7 @@ public class ManagerController {
     }
 
     @PostMapping("/interrogate")
+    @Operation(summary = "Query the application result - authorization is not required")
     public ResponseEntity<?> interrogateCredit(@Valid @RequestBody InterrogateDto interrogateDto) {
         try {
             Long userId = userService.confirmUserInfo(interrogateDto.getTckn(), interrogateDto.getDateOfBirth());
@@ -63,6 +68,7 @@ public class ManagerController {
     }
 
     @PostMapping("/applyCreditWithoutRegistered")
+    @Operation(summary = "Applying for a loan. In addition to salary and optional guarantee information, user information is also required. - authorization is not required")
     public ResponseEntity<?> applyCreditWithoutRegistered(@Valid @RequestBody ApplyExtendedSaveEntityDto saveEntityDto) {
         try {
             UserSaveEntityDto userSaveEntityDto = ManageMapper.INSTANCE.convertToAppAllInfoSaveEntityToUserSaveEntityDto(saveEntityDto);

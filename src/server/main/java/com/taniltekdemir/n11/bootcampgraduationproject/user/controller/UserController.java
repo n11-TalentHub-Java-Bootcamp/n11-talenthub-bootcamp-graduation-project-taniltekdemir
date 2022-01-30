@@ -7,6 +7,8 @@ import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.dto.UserSaveEntityDto;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.entity.User;
 import com.taniltekdemir.n11.bootcampgraduationproject.user.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +21,13 @@ import java.util.List;
 @RequestMapping("/users")
 @CrossOrigin
 @RequiredArgsConstructor
+@Tag(name = "User Controller", description = "Here we can list, save, delete and update users.")
 public class UserController {
 
     private final UserService userService;
 
     @GetMapping
+    @Operation(summary = "Listing all customers - authorization is required")
     public ResponseEntity<?> getAll() {
 
         List<UserDto> userDtos = userService.findAll();
@@ -32,6 +36,7 @@ public class UserController {
     }
 
     @PostMapping
+    @Operation(summary = "Add new customer - authorization is required")
     public ResponseEntity<?> save(@Valid @RequestBody UserSaveEntityDto userSaveEntityDto) {
         try {
             userService.validationForSaveUser(userSaveEntityDto);
@@ -45,6 +50,7 @@ public class UserController {
     }
 
     @PostMapping("/updateUser")
+    @Operation(summary = "Update existing customer information - authorization is required")
     public ResponseEntity<?> updateUser(@RequestBody UserDto userDto) {
         try {
             UserDto updateUser = userService.update(userDto);
@@ -56,6 +62,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete with userId - authorization is required")
     public void delete(@PathVariable Long id){
         try {
             userService.delete(id);
@@ -66,6 +73,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get user Info with userId - authorization is required")
     public ResponseEntity<?> findByUserId(@PathVariable Long id){
         try {
             User user = userService.findById(id);
@@ -77,6 +85,7 @@ public class UserController {
     }
 
     @GetMapping("/allInfo")
+    @Operation(summary = "Lists all registered credit transactions with user information - authorization is required")
     public ResponseEntity<?> getAllInfo() {
 
         List<InfoDto> infoDtos = userService.findAllInfo();

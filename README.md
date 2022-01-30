@@ -21,8 +21,9 @@ Loan Application System
 ## Installation
 1. Clone the repo [repo](https://github.com/n11-TalentHub-Java-Bootcamp/n11-talenthub-bootcamp-graduation-project-taniltekdemir)
 2. Import the project to your IDE
-3. You can send requests using the clientside project and see the endpoints in the Swagger document [swagger-doc]
-4. The project is running on the 8080 port by default. You can access the project run on the client side from http://localhost:3000/
+3. In PostgreSql, you need to add a database with the name credit_system
+4. You can send requests using the clientside project and see the endpoints in the Swagger document [swagger-doc]
+5. The project is running on the 8080 port by default. You can access the project run on the client side from http://localhost:3000/
 
 
 ## Some Highlights
