@@ -1,3 +1,15 @@
+<div id="top"></div>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="# Project Description">About The Project</a></li>
+    <li><a href="##Built With">Built With</a></li>
+    <li><a href="## Installation">Getting Started</a></li>
+  </ol>
+</details>
+
 # Project Description
 Loan Application System
 - can receive a loan application from the user, 
@@ -91,3 +103,6 @@ Two user types, Admin and Customer, are defined. There are pages that only Admin
 
 ## alertify 
 - Error messages are shown as pop ups with alertify.
+- 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
