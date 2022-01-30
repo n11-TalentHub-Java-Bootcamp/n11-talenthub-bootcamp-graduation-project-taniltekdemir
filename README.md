@@ -1,15 +1,5 @@
 <div id="top"></div>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="# Project Description">About The Project</a></li>
-    <li><a href="##Built With">Built With</a></li>
-    <li><a href="## Installation">Getting Started</a></li>
-  </ol>
-</details>
-
 # Project Description
 Loan Application System
 - can receive a loan application from the user, 
